@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Page</title>
+  <!-- Link Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Link W3.CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  <script src="https://kit.fontawesome.com/9f8c0801f0.js" crossorigin="anonymous"></script>
+  <!-- Your Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+</head>
+
+<body>
+
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top appearAnima ">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand" href="index.html">My Brand</a>
+      <!-- Hamburger for Small Screens -->
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- Navbar Links -->
+        <ul class="navbar-nav ">
+          <li class="nav-item"><a class="nav-link" href="index.html#myHome">My Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">About Us &darr;</a>
+            <div class="dropdown-menu" aria-labelledby="aboutDropdown">
+              <a class="dropdown-item" href="index.html#myAboutUssect">About Us Section </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="index.html#myTeam">My Team</a>
+              <a class="dropdown-item" href="index.html#myVission">My Vision</a>
+              <a class="dropdown-item" href="index.html#myMission">My Mission</a>
+              <a class="dropdown-item" href="index.html#myBackground">My Background</a>
+              <a class="dropdown-item" href="index.html#mySection">My Section</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html#myServices">My Services</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#myContact">My Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="myContact" class="section" style="margin: 40px;">
+    
+      
+        
+          <h2>Contact Us</h2>
+          <form id="contactForm" style="margin: 10px;">
+            <table class="w3-table w3-striped w3-bordered w3-card-4 d-flex justify-content-center">
+              <tr>
+              <div class="form-group">
+              
+              <th class="w3-right-align"><label for="fullName">Full Name:</label></th>
+              <td><input type="text" class="form-control" id="fullName" name="fullName" required></td>
+            
+            </div>
+          </tr>
+          <tr>
+            <div class="form-group">
+              
+              <th class="w3-right-align"><label for="email">Email Address:</label></th>
+              <td><input type="email" class="form-control" id="email" name="email" required></td>
+            
+            </div>
+          </tr>
+          <tr>
+            <div class="form-group">
+              <th class="w3-right-align"><label for="message">Message:</label></th>
+              <td><textarea class="form-control" id="message" name="message" rows="4" required></textarea></td>
+            </div>
+          </tr>
+          </table>
+          
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+          </form>
+        
+      
+    
+        </div>
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-between">
+        <div class="col slideFromLeft">
+          <!-- Footer Options -->
+          <ul class="footer-options slideFromLeft">
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+            <!-- Add more options as needed -->
+          </ul>
+        </div>
+
+
+
+        <div class="col text-right  slidedown">
+          <!-- Social Media Icons -->
+          <ul class="social-icons">
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist our Facebook Page"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist our X Page"><i class="fab fa-brands fa-x-twitter"></i></a></li>
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist our Instagram Page"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist our Github Page"><i class="fab fa-brands fa-github"></i></a></li>
+            <!-- Add more social media icons with their respective classes -->
+          </ul>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row  ">
+        <!-- Copyright and Privacy Policy -->
+        <div class="col-sm-12 col-xl-12 footer-text text-center slideup d-flex justify-content-center">
+          <p><a href="">&copy; </a>Sujay V Kulkarni
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link Bootstrap JS -->
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  // Hide brand name initially
+  var navbarBrand = document.querySelector('.navbar-brand');
+  navbarBrand.classList.remove('d-none');
+  document.querySelector('.navbar').classList.remove('scrolled');
+  document.querySelector('.navbar-nav').classList.remove('justify-content-center');
+  document.querySelector('.navbar-nav').classList.add('ml-auto');
+  
+
+  
+});
+  </script>
+</body>
+
+</html>
