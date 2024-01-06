@@ -1,15 +1,15 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Hide brand name initially
+  
   var navbarBrand = document.querySelector('.navbar-brand');
   navbarBrand.classList.add('d-none');
 
-  // Activate Scrollspy
+  
   document.body.setAttribute('data-target', '.navbar');
   document.body.setAttribute('data-offset', '80');
 
-  // Change Navbar Style on Scroll
+  
   window.addEventListener('scroll', function () {
       if (document.documentElement.scrollTop > 200) {
           document.querySelector('.navbar').classList.add('scrolled');
@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
 
-  // ... Other functionalities remain unchanged ...
-  // Scrollspy offset adjustment for smooth scrolling
 
   
 
@@ -61,15 +59,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
 document.addEventListener('DOMContentLoaded', function () {
+  alert("hi");
   const contactForm = document.getElementById('contactForm');
   
 
   contactForm.addEventListener('submit', function (event) {
-    event.preventDefault(); 
-    let fullName = document.getElementById("fullName").value.trim();
+    
+   // event.preventDefault(); 
+    let fullName = document.getElementById("fullName").value;
     let email = document.getElementById("email").value;
     let msg=document.getElementById("message").value;
+    
     
     
     if (fullName === '' || fullName.length < 3) {

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sujay Kulkarni</title>
+  <!-- Link Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Link W3.CSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://kit.fontawesome.com/9f8c0801f0.js" crossorigin="anonymous"></script>
+  <!-- Your Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="80">
+
+  <!-- Optional Header Above Navbar -->
+  <div class="w3-display-container appearAnima">
+    <img src="images/headderimg-cropped.png" alt="Lights" class="img-fluid" >
+    <div class="w3-display-bottommiddle w3-container"></div>
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-secondary sticky-top appearAnima" style="width: 100%;">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Sujay V Kulkarni</a>
+      <!-- Hamburger for Small Screens -->
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <!-- Navbar Links -->
+        <ul class="navbar-nav justify-content-center">
+          <li class="nav-item"><a class="nav-link" href="index.html" data-toggle="tooltip" data-placement="bottom" title="Home">Entrance</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle  active" href="#" id="aboutDropdown" data-toggle="dropdown" data-placement="bottom" title="Go through my academic life">Study/Work Room &darr;</a>
+            <div class="dropdown-menu animated fadeInDown" aria-labelledby="aboutDropdown">
+              <a class="dropdown-item" href="#myAboutUssect"> Explore Study/ Work Room</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#profile">Profile</a>
+              <a class="dropdown-item" href="#projects">Projects</a>
+              <a class="dropdown-item" href="#skillss">Skills</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#education">Education</a>
+              <a class="dropdown-item" href="#work-experience">Experience</a>
+              <a class="dropdown-item" href="#interests">Areas Of Interest</a>
+              <a class="dropdown-item" href="#projects">Web Development</a>
+              <a class="dropdown-item" href="#datapro">Data Science</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="auditoriumDropdown" data-toggle="dropdown" data-placement="bottom" title="Extracurricular activities">Personal Auditorium &darr;</a>
+            <div class="dropdown-menu animated fadeInDown" aria-labelledby="auditoriumDropdown">
+                <a class="dropdown-item" href="persaudi.html"> Pesonal Auditorium </a>
+                <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="persaudi.html#poems">Poems</a>
+              <a class="dropdown-item" href="persaudi.html#tabla">Tabla</a>
+              
+              <a class="dropdown-item" href="persaudi.html#speeches">Speeches</a>
+              <a class="dropdown-item" href="persaudi.html#others">Others</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="balconyDropdown" data-toggle="dropdown" data-placement="bottom" title="Space where I express my opnions and feelings!">Balcony &darr;</a>
+            <div class="dropdown-menu animated fadeInDown" aria-labelledby="balconyDropdown">
+                <a class="dropdown-item" href="balcony.html"> Balcony </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="balcony.html#blogs">Blogs</a>
+              <a class="dropdown-item" href="balcony.html#posts">Posts</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="svkachievements.html" data-toggle="tooltip" data-placement="bottom" title="Appraise my achievements!">Wall of Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html" data-toggle="tooltip" data-placement="bottom" title="Connect with me">Knock Knock</a></li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+  
+  <div class="main-content">
+
+  <div class="container mt-5">
+    <!-- Profile Container -->
+    <div class="profile-container" id="profile">
+      <h2 class="section-title">Profile and Summary</h2>
+      <p class="profile-text">
+        I am a motivated and creative college student of RV University. I know HTML, CSS, Javascript and C,Python with a proven ability
+        to design and develop websites. I am skilled in project management, communication, and leveraging analytical
+        thinking to tackle challenges. I am also a musician, creative writer, and public speaker with a strong
+        interest in contributing to various projects while focusing on academic pursuits.
+      </p>
+    </div>
+
+    <!-- Projects Container -->
+    <div class="projects-container" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="project-card">
+        <h4 class="project-title">dhwanimuzics.com - Web Development</h4>
+        <p class="project-description">Designed and developed a static website for my band. Responsible for layout
+          design, CSS, content creation, and information presentation.</p>
+        <div class="project-options">
+          <a href="http://dhwanimuzics.com/dhwanimuzics/" class="project-link" target="_blank">Visit</a>
+          <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <h4 class="project-title">Sriaranea - Web Development</h4>
+        <p class="project-description">a project that focuses on providing affordable web development solutions and other digital solutions for small buisnesses(was deployed on github and removed later to host another free website)</p>
+        <div class="project-options">
+          <a href="#" class="project-link" disabled>Visit</a>
+          <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal" disabled>Feedback</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <h4 class="project-title">A tic tac toe game - Web Development</h4>
+        <p class="project-description">A tic tac toe game as a fun project to learn JavaScript</p>
+        <div class="project-options">
+          <a href="tictactoejavascriptpractice/tictactoe.html" class="project-link" target="_blank">Visit</a>
+          <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
+        </div>
+      </div>
+      <div class="project-card">
+        <h4 class="project-title">Rudra Rvu Website - Web Development</h4>
+        <p class="project-description">Built Rudrarvu data analysis team website and deployed it on github</p>
+        <div class="project-options">
+          <a href="https://rudrarvu.com/" class="project-link" disabled target="_blank">Visit</a>
+          <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
+        </div></div>
+        <div class="project-card">
+            <h4 class="project-title">Shreematasangeetha vidyalaya - Web Development</h4>
+            <p class="project-description"> A project in progress for a music school</p>
+            <div class="project-options">
+              <a href="https://shreematamusic.github.io/ShreemataSangeetaShale/index.html" class="project-link">Visit</a>
+              <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
+            </div>
+          </div>
+          <div class="project-card">
+            <h4 class="project-title">Golden Lanka - Web Development</h4>
+            <p class="project-description">A website in progress for tour and travels in srilanka</p>
+            <div class="project-options">
+              <a href="#" class="project-link" disabled>Visit</a>
+              <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal" disabled>Feedback</button>
+            </div>
+          </div>
+          <div class="project-card">
+            <h4 class="project-title" id="datapro">Crop Analysis - Data Analysis</h4>
+            <p class="project-description"> Indian Crops Analysis</p>
+            <div class="project-options">
+              <a href="https://rudrarvu.com/pdfs/RUDRA%20CROP%20ANALYSIS%20REPORT.pdf" class="project-link">Visit</a>
+              <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
+            </div>
+          </div>
+          <div class="project-card">
+            <h4 class="project-title">Service providers - Data Analysis</h4>
+            <p class="project-description"> Service providers(dummy names to maintain confidentality) OTT platforms analysis</p>
+            <div class="project-options">
+              <a href="analyticapdf.pdf" class="project-link">Visit</a>
+              <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal">Feedback</button>
+            </div>
+          </div>
+          <div class="project-card">
+            <h4 class="project-title">Advisor for Business analysis of Harshita technologies - Data Analysis</h4>
+            <p class="project-description">Various ways and insights about business transactions of Harshitha technologies</p>
+            <div class="project-options">
+              <a href="#" class="project-link" disabled>Visit</a>
+              <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal" disabled>Feedback</button>
+            </div>
+          </div>
+          <div class="project-card">
+            <h4 class="project-title">Shobhakala creation - web development</h4>
+            <p class="project-description">A project in progress for artistic products</p>
+            <div class="project-options">
+              <a href="#" class="project-link" disabled>Visit</a>
+              <button class="project-feedback-btn" data-toggle="modal" data-target="#feedbackModal" disabled>Feedback</button>
+            </div>
+          </div>
+          
+      </div>
+      <!-- Skills Container -->
+    
+   
+   
+     <div class="flex-container-swroom">
+       
+   
+       <div id="skillss" class="section-swroom">
+        <h2 class="section-heading arrow-border" style="text-align: center; margin-top: 30px;">Skills</h2>
+        <div id="skills" class="container mt-5">
+            
+          
+            
+            <div class="skill-category">
+              <h3 class="category-heading">Academic Skills</h3>
+              <div class="skill-card">
+                <p class="skill-title">Linguistic Intelligence</p>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">Effective Communication Skills</p>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">Research Skills</p>
+              </div>
+              
+              <div class="skill-card">
+                <p class="skill-title">Project Management</p>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">Planning and organization</p>
+              </div>
+            </div>
+          
+            
+            <div class="skill-category">
+              <h3 class="category-heading">Programming Skills</h3>
+              <div class="skill-card">
+                <p class="skill-title">HTML</p>
+                <div class="progress">
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:93%"></div>
+                  </div>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">CSS</p>
+                <div class="progress">
+                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:93%"></div>
+                  </div>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">C Programming</p>
+                <div class="progress">
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:70%"></div>
+                  </div>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">Javascript</p>
+                <div class="progress">
+                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:65%"></div>
+                  </div>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">Web Design</p>
+                <div class="progress">
+                    <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:55%"></div>
+                  </div>
+              </div>
+              <div class="skill-card">
+                <p class="skill-title">Python</p>
+                <div class="progress">
+                    <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:25%"></div>
+                  </div>
+              </div>
+            </div>
+          
+           
+          
+          </div>
+       </div>
+   
+       <div id="interests" class="section-swroom">
+         <h2>Areas of Interest</h2>
+         <h3>Academic:</h3>
+  <ul>
+    <li>Full stack web development</li>
+    <li>AI-ML</li>
+    <li>Data Warehousing and data mining</li>
+    <li>Research and pure science</li>
+    <li>Astrophysics</li>
+    <li>Astronomy and space science</li>
+    <li>Newtonian Physics</li>
+    <li>Quantum physics</li>
+    <li>Calculus</li>
+    <li>Botany and biophysics</li>
+    <li>Innovation and entrepreneurship</li>
+    <li>Innovation and geopolitics</li>
+    <li>Teaching</li>
+  </ul>
+
+  <h3>Non Academic:</h3>
+  <ul>
+    <li>Music</li>
+    <li>Spirituality and metaphysics</li>
+    <li>Indology and ancient Indian philosophy</li>
+    <li>Old Kannada Literature and poems</li>
+    <li>Sanskrit and Sanskrit literature and epics</li>
+    <li>Nation building and geopolitics</li>
+  </ul>
+
+       </div>
+   
+       
+     </div>
+     <div id="education">
+        <h2>Education</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Std.</th>
+              <th>Board</th>
+              <th>Institution</th>
+              <th>Marks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>II Pu:</td>
+              <td>DPUE Karnataka</td>
+              <td>RV PU College</td>
+              <td>96%</td>
+            </tr>
+            <tr>
+              <td>I Pu:</td>
+              <td>DPUE Karnataka</td>
+              <td>RV PU College</td>
+              <td>95%</td>
+            </tr>
+            <tr>
+              <td>10th:</td>
+              <td>KSEEB</td>
+              <td>Shree Bharati Vidyalaya</td>
+              <td>98%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+      <div id="work-experience">
+        <h2>Work Experience</h2>
+        <p>  am a fresher who is eager to learn and work but with no formal work experience of such. But I do have experience of being part of many projects which are listed above and the number of years are as follows .</p>
+        <div class="experience-card">
+          <h3>Web Developer - Dhwani Muzics</h3>
+          <p class="role">Role: Web Developer</p>
+          <p class="duration">Duration: December 2022 - Present</p>
+          <ul>
+            <li>Designed and developed dhwanimuzics.com, a static website for the band.</li>
+            <li>Responsible for layout design, CSS, content creation, and information presentation.</li>
+          </ul>
+        </div>
+    
+        <div class="experience-card">
+          <h3>Developer - Sriaranea</h3>
+          <p class="role">Role: Project Developer</p>
+          <p class="duration">Duration: 2023 - Present</p>
+          <ul>
+            <li>Worked on Sriaranea project, providing affordable web development solutions for small businesses.</li>
+            <li>Deployed projects on GitHub and managed digital solutions.</li>
+          </ul>
+        </div>
+        <div class="experience-card">
+            <h3>RUDRAS </h3>
+            <p class="role">Role: President and data analyst</p>
+            <p class="duration">Duration: 2023 - Present</p>
+            <ul>
+              <li>Performed some data analysis projects</li>
+              <li>Made websites as well apart from data analysis to present them and publish them.</li>
+            </ul>
+          </div>
+   
+   
+   
+
+      <!-- Modal for Feedback -->
+      <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="feedbackModalLabel">Your Feedback:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="project">Select Project:</label>
+            <select class="form-control" id="project" name="project" required>
+              <option value="" disabled selected>Select a project</option>
+              <option value="dhwanimuzics">Dhwanimuzics.com</option>
+              <option value="sriaranea">Sriaranea</option>
+              <option value="TicTacToe">Tic Tac Toe game</option>
+              <option value="Rudrarvu">Rudrarvu </option>
+              <option value="mywebsite"> My website(this one)</option>
+              <option value="shreemathasangeethavidyalaya">shreemathasangeethavidyalaya</option>
+              <option value="cropAnalysis">Crop Analysis</option>
+              <option value="Serviceproviders">Service providers(dummy names to maintain confidentality) OTT platforms analysis</option>
+              
+              <!-- Add other project options -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <textarea class="form-control" id="feedback" name="feedback" rows="4" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit Feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  
+
+  <footer class="footer align-self-end">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-between">
+        <div class="col slideFromLeft">
+          <!-- Footer Options -->
+          <ul class="footer-options slideFromLeft">
+            <li><a href="SujayResume.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Download Resume</a></li>
+            <li><a href="mailto:sujaykulkarni2211@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> Mail me </a></li>
+            <li><a href="tel:9113518404">&phone; Call me</a></li>
+            <!-- Add more options as needed -->
+          </ul>
+        </div>
+
+
+
+        <div class="col text-right  slidedown">
+          <!-- Social Media Icons -->
+          <ul class="social-icons">
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Visit my linkedin page"><i class="fab fa fa-linkedin-square" ></i></a></li>
+            
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist my Instagram Page"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist my Github Page"><i class="fab fa-brands fa-github"></i></a></li>
+            
+          </ul>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div class="row  ">
+        <!-- Copyright and Privacy Policy -->
+        <div class="col-sm-12 col-xl-12 footer-text text-center slideup d-flex justify-content-center">
+          <p><a href="">&copy; </a>Sujay V Kulkarni
+            <a href="#">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Link Bootstrap JS -->
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
