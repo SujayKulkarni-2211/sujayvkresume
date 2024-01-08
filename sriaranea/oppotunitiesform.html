@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sriaraneastyle.css">
+    <title>Sri Aranea-Opportunities Form </title>
+</head>
+<body>
+    <header>
+
+        <div class="header">
+            <div class="logo">
+              <a href="index.html">
+                <img src="images/thelogo.png" alt="logo">
+              </a>
+            </div>
+        </div>
+        <nav>
+            <div class="navbar" id="navbar">
+                <nav>
+                 
+                    <button class="hamburger" aria-label="Menu" onclick="toggleNavLinks()" href="javascript:void(0);">
+                      <span class="hamburger-icon"></span>
+                    </button>
+                    <ul class="nav-links">
+                      <li><a href="index.html">Home</a></li>
+                      
+                      <li class="dropdown">
+                        <a href="aboutus.html">About Us <span class="arrow-dropdown"><img src="images/arrowimg_prev_ui.png" alt="" width="25px" style="display: inline-block;"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="aboutus.html#team">Team</a></li>
+                          <li><a href="aboutus.html#vision">Vision</a></li>
+                          <li><a href="aboutus.html#mission">Mission</a></li>
+                          <li><a href="aboutus.html#background">Background</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="index.html#services">Services</a></li>
+                      <li><a href="index.html#whyus">Why Choose Us</a></li>
+                      <li><a href="oppotunitiesform.html">Opportunities</a></li>
+                      <li><a href="contactform.html">Contact Us</a></li>
+                    </ul>
+                  </nav>
+                  
+            </div>
+        </nav>
+    </header>
+    <div class="main">
+        <div class=" contact-form" id="oppform">
+            <h5>Heard of the saying, "Opportunities don't knock twice!", this tab is here for you to knock on it! Ready to show your passion to the world?</h5>
+            <h3>Join Our Team Now! &darr;</h3>
+            <form action="javascript:history.back()" method="POST">
+                
+                <table>
+                    <tr id="names">
+                        <td>I am </td>
+                        <td><input type="text" name="fname" id="fname" required maxlength="100" placeholder="First Name(required)">
+                            
+                            <input type="text" name="mname" id="mname" maxlength="1" placeholder="Middle Name">
+                            <input type="text" name="lname" id="lname" required maxlength="100" placeholder="Last Name (required)">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                       
+                            
+                        
+                        <td><fieldset><legend>Contact Details</legend>
+                            <div id="emaillabel">
+                            <label for="email">This is my email:</label></div><input type="email" name="email" id="email" required placeholder="example@email.com (required)">
+                            <label for="mobno">You can contact me with this Number:</label><input type="tel" placeholder="mobile number" name="mobno" id="mobno" maxlength="10">
+                        </fieldset></td>
+                        
+                    
+                    </tr>
+                    <tr>
+                        <td><fieldset>
+                            <label for="">This is my resume:</label>
+                            <input type="file" name="resume" id="resume" >
+                            <label for="">Experience</label>
+                            <input type="number" placeholder="if any" name="experience" id="experience">
+                            
+                        </fieldset></td>
+
+                    </tr>
+                    <tr><td>
+                        <fieldset>
+                            <label for="message">Areas of interest and message:</label><textarea name="message" id="message" cols="30" rows="10" placeholder="This is your space" itemid="message"></textarea><br><br>
+                        </fieldset>
+                    </td></tr>
+                    
+                     
+                    
+                </table>
+                <center><button id="submitbtn" type="submit" onclick="contactDisplay()">Submit</button></center>
+            </form>
+        </div>
+       </div>
+       <footer> 
+      <div class="footer" ><br>
+        <div class="containlinkicon">
+            <div class="footerlink">
+                <a href="oppotunitiesform.html">Contact Us Now!</a>
+              </div>
+              <div class="footerlink">
+                <a href="oppotunitiesform.html">Go to Top</a>
+              </div>
+              <div class="footericons">
+                <a href="https://www.instagram.com/sriaranea/"><img src="images/instagramblack.png" alt="Instagram" ></a>
+                <a href="https://www.facebook.com/profile.php?id=61554240071003"><img src="images/facebooklogo-removebg-preview.png" alt="Facebook"></a>
+                <a href="https://www.linkedin.com/in/sri-aranea-74845a2a4/"><img src="images/linkedin.png" alt="Linkedin"></a>
+                <a href="https://twitter.com/SriAranea"><img src="images/logo-x-twitter.svg" alt="Twitter"></a>
+                <a href="mailto:sriaranea@gmail.com"><img src="images/Mail-Icon-White-on-Black.png" alt="Email"></a>
+              </div>
+      </div>
+<hr class="footerhr"><br class="lastbreak">
+<span class="footnote" >
+  <a href="rule.html#copyright">&copy; 
+  <p class="foottext">Sri <em>Aranea</em> 2023 </p></a>
+  <a href="rule.html#privacypolicy">Privacy Policy</a>
+  
+</span>
+</div>
+
+    </footer>
+    
+   
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+ 
+ <script>
+     function contactDisplay() {
+    
+    var name = document.getElementById('fname').value;
+    var email = document.getElementById('email').value;
+    
+     var message = document.getElementById('message').value;
+
+     if(name.length <= 0 )
+     {
+        // var fNameMsg = document.getElementById('fnameMsg');
+        // fNameMsg.innerText = "Please enter First Name";
+        document.getElementById('fname').placeholder = "Please enter FirstName";
+        alert("Please enter the First Name");
+        return 0;
+     }
+     if(email.length <= 0 )
+     {
+        // var fNameMsg = document.getElementById('fnameMsg');
+        // fNameMsg.innerText = "Please enter First Name";
+        document.getElementById('fname').placeholder = "Please enter FirstName";
+        alert("Please enter the Email id");
+        return 0;
+     }
+     if(message.length <= 0 )
+     {
+        // var fNameMsg = document.getElementById('fnameMsg');
+        // fNameMsg.innerText = "Please enter First Name";
+        document.getElementById('fname').placeholder = "Please enter FirstName";
+        alert("Please enter the Areas of interest and message");
+        return 0;
+     }
+
+    
+    var thankYouMessage = `Thank you , ${name}! \n Glad you could take out your time for us.  \n We will get back to you at this email: ${email}. \n Have a nice day!  Regards, \n Sri Aranea!`;
+    alert(thankYouMessage);
+
+    
+    console.log("Name: " + name);
+    console.log("Email: " + email);
+    
+    console.log("Message: " + message);
+       // alert("Hi");
+
+    history.back();
+         return false;
+}
+ </script>
+
+ <script src="javascript/sriaraneascript.js"></script>   
+    
+
+</body>
+</html>

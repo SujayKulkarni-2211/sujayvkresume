@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sriaraneastyle.css">
+    <title>Sri Aranea-Home </title>
+</head>
+<body>
+    <header>
+
+        <div class="header">
+            <div class="logo">
+              <a href="index.html">
+                <img src="images/thelogo.png" alt="logo">
+              </a>
+            </div>
+        </div>
+        <nav>
+            <div class="navbar" id="navbar">
+                <nav>
+                 
+                    <button class="hamburger" aria-label="Menu" onclick="toggleNavLinks()" href="javascript:void(0);">
+                      <span class="hamburger-icon"></span>
+                    </button>
+                    <ul class="nav-links">
+                      <li><a href="index.html">Home</a></li>
+                      
+                      <li class="dropdown">
+                        <a href="aboutus.html">About Us <span class="arrow-dropdown"><img src="images/arrowimg_prev_ui.png" alt="" width="25px" style="display: inline-block;"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="aboutus.html#team">Team</a></li>
+                          <li><a href="aboutus.html#vision">Vision</a></li>
+                          <li><a href="aboutus.html#mission">Mission</a></li>
+                          <li><a href="aboutus.html#background">Background</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#services">Services</a></li>
+                      <li><a href="#whyus">Why Choose Us</a></li>
+                      <li><a href="oppotunitiesform.html">Opportunities</a></li>
+                      <li><a href="contactform.html">Contact Us</a></li>
+                    </ul>
+                  </nav>
+                  
+            </div>
+        </nav>
+    </header>
+    <div class="main">
+
+      <div class="container" id="intro">
+        <h5>Dedicated Websmiths,<br> Elevating brands</h5>
+        <p style="font-size: larger;">Empowering businesses with bespoke web solutions,we are an independent web development agency here to elevate your brand's digital presence.</p>
+      </div>
+    <div id="carouselExampleCaptions" class="carousel slide mx-auto" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active carousel-img">
+      <img src="images/collaborationsandwin.png" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="font-weight: bolder;">Connecting Ideas, Building Realities.</h5>
+        <p >Weaving threads of Success with Webs of Innovation</p>
+      </div>
+    </div>
+    <div class="carousel-item carousel-img">
+      <img src="images/mentoring.jpeg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="font-weight: bolder;">Persistence in Progress</h5>
+        <p>Persistently learning through code, crafting excellence, and custom solutions under expert mentorship</p>
+      </div>
+    </div>
+    <div class="carousel-item carousel-img">
+      <img src="images/codingsideview.jpeg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="font-weight: bolder;">Devoted to Digital Excellence</h5>
+        <p>We strive relentlessly to set benchmarks in the digital landscape, driven by an unyielding passion for innovation and precision.</p>
+      </div>
+    </div>
+    <div class="carousel-item carousel-img">
+      <img src="images/rudracollaboration.jpeg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="font-weight: bolder;">Building networks, Spinning Success</h5>
+        <p>Building networks isn't just our skill; it's our passion. We knit together possibilities and successes through strategic connectivity.</p>
+      </div>
+    </div>
+    <div class="carousel-item carousel-img">
+      <img src="images/coderpic.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 style="font-weight: bolder;">Proffering Personalization, Weaving Your Vision</h5>
+        <p>Delivering personalized experiences by intricately weaving each client's unique vision into digital craftsmanship.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="container2" id="services">
+  <div class="left-box"><h2>Services </h2><br>
+</div>
+
+<center><div class="tab">
+  <button class="tablinks" class="tabbtn" onclick="openContent(event, 'webDev')">Web Development</button>
+  <button class="tablinks" class="tabbtn" onclick="openContent(event, 'design')">Design Services</button>
+  <button class="tablinks" class="tabbtn" onclick="openContent(event, 'digitalMarketing')">Digital Marketing Solutions</button>
+  <button class="tablinks" class="tabbtn" onclick="openContent(event, 'appDev')">Application Development</button>
+  
+  <button class="tablinks" onclick="openContent(event, 'consultation')">Consultation and Strategy</button>
+  <!-- <button class="tablinks" onclick="openContent(event, 'support')">Support and Maintenance</button> -->
+  <button class="tablinks" onclick="openContent(event, 'content')">Content Management</button>
+</div></center>
+
+<div id="webDev" class="tabcontent">
+
+  
+      <h2>Web Development:</h2>
+      <ul>
+        <li>Custom Website Development</li>
+        <li>Front-end and Back-end Development</li>
+        <li>Content Management System (CMS) Development (WordPress, Drupal, etc.)</li>
+        <li>E-commerce Solutions</li>
+        <li>Responsive Web Design for Mobile Compatibility</li>
+      </ul>
+    </div>
+  
+
+<div id="design" class="tabcontent">
+  
+      <h2>Design Services:</h2>
+      <ul>
+        <li>User Interface (UI) Design</li>
+        <li>User Experience (UX) Design</li>
+        <li>Graphic Design (Logos, Icons, Visual Elements)</li>
+        <li>Branding and Identity Design</li>
+        <li>Prototyping and Wireframing</li>
+      </ul>
+    </div>
+  
+
+<div id="digitalMarketing" class="tabcontent">
+  
+      <h2>Digital Marketing Solutions:</h2>
+      <ul>
+        <li>Search Engine Optimization (SEO)</li>
+        <li>Social Media Marketing and Management</li>
+        <li>Pay-Per-Click (PPC) Campaigns</li>
+        <li>Email Marketing and Automation</li>
+        <li>Content Strategy and Creation</li>
+      </ul>
+    </div>
+ 
+
+<div id="appDev" class="tabcontent">
+  
+      <h2>Application Development:</h2>
+      <ul>
+        <li>Mobile App Development (iOS, Android)</li>
+        <li>Progressive Web App (PWA) Development</li>
+        <li>Cross-platform App Development</li>
+        <li>API Development and Integration</li>
+      </ul>
+    </div>
+  
+
+<!-- <div id="ecommerce" class="tabcontent">
+  <div class="pointboxparent">
+    <div class="pointbox">
+      <h2>E-commerce Solutions:</h2>
+      <ul>
+        <li>Online Store Development</li>
+        <li>Payment Gateway Integration</li>
+        <li>Inventory Management Systems</li>
+        <li>Shopping Cart Development and Optimization</li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<div id="consultation" class="tabcontent">
+  
+      <h2>Consultation and Strategy:</h2>
+      <ul>
+        <li>Digital Transformation Consultation</li>
+        <li>Technology and Software Consulting</li>
+        <li>Project Planning and Management</li>
+        <li>IT Strategy Development</li>
+      </ul>
+    </div>
+  
+
+<div id="support" class="tabcontent">
+  
+      <h2>Support and Maintenance:</h2>
+      <ul>
+        <li>Website Maintenance and Updates</li>
+        <li>Technical Support and Troubleshooting</li>
+        <li>Security Audits and Enhancements</li>
+        <li>Performance Optimization</li>
+      </ul>
+    </div>
+  
+
+<div id="content" class="tabcontent">
+  
+      <h2>Content Management:</h2>
+      <ul>
+        <li>Content Creation (Copywriting, Blog Posts, Articles)</li>
+        <li>Content Strategy and Planning</li>
+        <li>Content Management System (CMS) Setup and Customization</li>
+        <li>Multimedia Content Development (Images, Videos)</li>
+      </ul>
+    </div>
+  
+
+</div>
+<div class="container1" id="whyus">
+  <div class="left-box">
+  <h3>Why Choose Us? </h3></div>
+  <div class="content-box">
+  <ol>
+    <div class="pointboxparent">
+    <div class="pointbox">
+  <li>
+    <h2>Passionate Learning:</h2>
+    <ul>
+      <li>At Sri Aranea, we redefine web development by infusing our passion for learning into every project.</li>
+      <li>As dedicated students, we enthusiastically explore novel avenues and techniques, committed to realizing your digital aspirations.</li>
+    </ul>
+  </li></div>
+  <div class="pointbox">
+  <li>
+    <h2>Client Commitment:</h2>
+    <ul>
+      <li>Our commitment to our clients transcends boundaries, stemming from the tale of the sacrificial spider.</li>
+      <li>This narrative symbolizes our readiness to go the extra mile, ensuring exceptional outcomes for every project.</li>
+    </ul>
+  </li> </div>
+  <div class="pointbox">
+  <li>
+    <h2>Affordable Expertise:</h2>
+    <ul>
+      <li>Although we're learners, our service doesn't compromise on extensive experience.</li>
+      <li>We've fortified our skills through practical applications, leaving behind contented clients and successful project stories.</li>
+    </ul>
+  </li></div>
+  <div class="pointbox">
+  <li>
+    <h2>Relationship Building:</h2>
+    <ul>
+      <li>We prioritize relationships, transforming acquaintanceships into long-lasting collaborations.</li>
+      <li>This approach fosters trust and consistently surpasses client expectations, establishing enduring partnerships.</li>
+    </ul>
+  </li>
+</div>
+<div class="pointbox">
+  <li>
+    <h2>Time Advantage:</h2>
+    <ul>
+      <li>Our student status gifts us the luxury of time, allowing personalized website tailoring.</li>
+      <li>Each project receives individual attention, guaranteeing top-notch quality and utmost priority.</li>
+    </ul>
+  </li></div>
+
+  <div class="pointbox"><li>
+    <h2>Mentorship and Expertise:</h2>
+    <ul>
+      <li>Robust mentorship guides our every step, enabling seamless integration of passionate design and development.</li>
+      <li>This mentorship ensures a blend of creativity and technical proficiency in all our endeavors.</li>
+    </ul>
+  </li>
+</div>
+<div class="pointbox">
+  <li>
+    <h2>Partnerships and Resources:</h2>
+    <ul>
+      <li>Collaborations with esteemed organizations like RUDRA expand our service range.</li>
+      <li>Our affiliation with RV University grants access to cutting-edge resources, ensuring impactful projects and mentorship.</li>
+    </ul>
+  </li></div>
+
+  <div class="pointbox"><li>
+    <h2>Personalisation:</h2>
+    <ul>
+      <li>There's no need to delay enhancing your digital presence; Sri Aranea is ready to weave tailored digital solutions promptly.</li>
+      <li>We specialize in crafting personalized solutions that cater specifically to your unique requirements.</li>
+    </ul>
+  </li></div>
+</div>
+</ol>
+</div>
+  </div>
+
+
+<div class="container1" id="aboutUs">
+  <div class="left-box" id="aboutustitle"><h3>About Us</h3></div>
+  <div class="point-box"><li style="list-style-type: none;"><p class="aboutuspara">We are a team of dynamic and enthusiastic learners passionate about web development. As aspiring professionals, we embrace challenges with a relentless pursuit of knowledge, constantly innovating to deliver exceptional digital solutions. Our foundation rests on the belief that every project is an opportunity to blend creativity and technology, resulting in bespoke web experiences. With a commitment to client-centricity, our journey is defined by dedication, innovation, and a quest for excellence. We take pride in transforming concepts into impactful digital realities, driven by our relentless pursuit of web development mastery. <a href="aboutus.html">Know More &rarr;</a></p></li></div>
+</div>
+
+
+  <div class="container1" id="projectsCont">
+    <div class="left-box" id="project"><h3>Our clients and collaborations</h3></div>
+  <div class="projectlist" id="projectlist" style="width:100%; display: flex; flex-wrap: wrap;">
+    <!-- <div class="teammember" id="mentor" style="width: 100%; "> -->
+    
+      <div class="card" id="dhwani"  >
+      <a href="http://dhwanimuzics.com/dhwanimuzics/"><img src="images/dhwanisailog.jpeg" alt="Dhwani "  ></a>
+      <div class="container">
+        <h4><b>Dhwani Muzics Website</b></h4> 
+        <p style="color: rgb(6, 216, 6);">Successfully completed and launched</p>
+      </div> 
+    </div>
+
+    <div class="card" id="pixelpioneers"  >
+      <a href="images/Pixel pioneerslogoforus.png"><img src="images/Pixel pioneerslogoforus.png" alt="Dhwani " ></a>
+      <div class="container"><h4><b>Pixel Pioneers Design</b></h4> 
+        <p style="color: rgb(43, 210, 239);">Logo Design and Collaboration</p></div>
+    </div>
+    <div class="card" id="pixelpioneers"  >
+      <a href="images/rudralogo.png"><img src="images/rudralogo-removebg-preview.png" alt="Dhwani " ></a>
+      <div class="container"><h4><b>RUDRA</b></h4> 
+        <p style="color: rgb(43, 210, 239);">Collaboration for Analytics and Web</p></div>
+    </div>
+    <div class="card" id="pixelpioneers"  >
+      <a href="images/rudralogo.png"><img src="images/Screenshot 2023-12-12 at 10.03.48 AM.png" alt="Equity Hub " ></a>
+      <div class="container"><h4><b>Equity Hub</b></h4> 
+        <p style="color: rgb(43, 210, 239);">Collaboration and advisory</p></div>
+    </div>
+    <div class="card" id="pixelpioneers"  >
+      <a href="images/Screenshot 2023-12-12 at 10.03.48 AM.png"><img src="images/ananyafurniture.jpeg" alt="Furniture Store-Ananya and  " ></a>
+      <div class="container"><h4><b>Furniture Store-Ananya</b></h4> 
+        <p style="color: rgb(43, 210, 239);">Collaboration and advisory</p></div>
+    </div>
+
+    
+
+    <br>
+  </div>
+  </div>
+
+
+
+</div>
+<!-- <br>
+<a href="/SujayVKulkarniresumewithcss/resumecolumnsnew.html">Resume</a>
+
+<a href="/SujayVKulkarniresumewithcss/resume.html">Resume2</a>-->
+    <footer>
+      <br>
+      <div class="footer" >
+        <div class="containlinkicon">
+        <div class="footerlink">
+          <a href="contactform.html">Contact Us Now!</a>
+        </div>
+        <div class="footerlink">
+          <a href="index.html">Go to Top</a>
+        </div>
+        <div class="footericons">
+          <a href="https://www.instagram.com/sriaranea/"><img src="images/instagramblack.png" alt="Instagram" ></a>
+          <a href="https://www.facebook.com/profile.php?id=61554240071003"><img src="images/facebooklogo-removebg-preview.png" alt="Facebook"></a>
+          <a href="https://www.linkedin.com/in/sri-aranea-74845a2a4/"><img src="images/linkedin.png" alt="Linkedin"></a>
+          <a href="https://twitter.com/SriAranea"><img src="images/logo-x-twitter.svg" alt="Twitter"></a>
+          <a href="mailto:sriaranea@gmail.com"><img src="images/Mail-Icon-White-on-Black.png" alt="Email"></a>
+        </div>
+      </div>
+<hr class="footerhr"><br class="lastbreak">
+<span class="footnote" >
+  <a href="rule.html#copyright">&copy; 
+  <p class="foottext">Sri <em>Aranea</em> 2023 </p></a>
+  <a href="rule.html#privacypolicy">Privacy Policy</a>
+  
+</span>
+</div>
+
+    </footer>
+    <script>
+    $('#carouselExampleCaptions').carousel({
+      interval: 500 // Change this value to adjust the autoplay interval (milliseconds)
+    })
+    function openContent(evt, contentName) {
+  
+  var tabcontent = document.getElementsByClassName("tabcontent");
+  for (var i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  
+  var tablinks = document.getElementsByClassName("tablinks");
+  for (var i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  
+  document.getElementById(contentName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+ <script src="javascript/sriaraneascript.js"></script>   
+</body>
+</html>
