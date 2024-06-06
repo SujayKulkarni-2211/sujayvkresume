@@ -115,7 +115,7 @@
           </tr>
           </table>
           
-            <button type="submit" class="btn btn-primary" style="margin-top: 10px;" onclick="submitme()">Submit</button>
+            <button type="button" class="btn btn-primary" style="margin-top: 10px;" onclick="submitForm()">Submit</button>
           </form>
         
       
@@ -167,39 +167,34 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
-<script>
-  function submitme(){
-    
-    const contactForm = document.getElementById('contactForm');
-    let fullName = document.getElementById("fullName").value;
-    let email = document.getElementById("email").value;
-    let msg=document.getElementById("message").value;
-    
-    
-    
-    if (fullName === '' || fullName.length < 3) {
-      alert(`Don't you think "${fullName}" is very abstract, random, and short for me to remember you? Please provide a valid full name which I can remember to respond back to and is more than 3 characters!`);
-    } 
-    
-    else {
-      alert(`Thank you ${fullName} for contacting us. We will get back to you shortly on your email: ${email}`);
-      
-      
-        localStorage.setItem('fullName', fullName);
-        localStorage.setItem('email', email);
-        localStorage.setItem('message:', msg);
-
-    
-
-      
-      console.log('Full Name:', fullName);
-      console.log('Email:', email);
-      console.log('Message:',msg);
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS with your user ID
+    emailjs.init('LSj1PUC36tu3JygHu'); 
+  
+    function submitForm() {
+      console.log("Form submitted!"); 
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+  
+      // Send the email using EmailJS
+      emailjs.send("service_3pnt78c", "template_1xthj2s", {
+        to_name: 'Sujay Kulkarni',
+        from_name: fullName,
+        email: email,
+        message: message
+      })
+      .then(function(response) {
+        alert(`Thank you ${fullName} for contacting us. We will get back to you shortly on your email: ${email}`);
+        console.log('Email sent:', response);
+        document.getElementById("contactForm").reset();
+      }, function(error) {
+        console.error('Error sending email:', error);
+        alert('Too Many Requests! Failed to send email. Please try again later.');
+      });
     }
-
-    contactForm.reset();
-  }
-</script>
+  </script>
 </body>
 
 </html>
