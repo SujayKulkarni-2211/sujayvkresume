@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sujay V Kulkarni · Cosmos</title>
+<link rel="stylesheet" href="css/cosmos.css">
+<script src="https://kit.fontawesome.com/9f8c0801f0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- ── THREE.JS CANVAS ──────────────────────────────── -->
+<canvas id="cosmos-canvas"></canvas>
+
+<!-- ── MUTE BUTTON (always visible) ─────────────────── -->
+<button id="cosmos-mute-btn" title="Mute">🔊</button>
+
+<!-- ── LOADER OVERLAY (shown during ship build) ─────── -->
+<div id="cosmos-loader-overlay">
+  <div id="cosmos-status">INITIALISING COSMOS...</div>
+  <button id="cosmos-enter-btn">Enter Sujay's Cosmos</button>
+</div>
+
+<!-- ── ORBIT UI (shown after entering) ──────────────── -->
+<div id="cosmos-orbit-ui">
+
+
+  <!-- LEFT PANEL: Photo + shloka only -->
+  <div id="cockpit-left-panel">
+    <div class="panel-glass">
+      <div class="pilot-photo-wrap">
+        <img src="images/sujayrv_cleanup.jpeg" alt="Sujay V Kulkarni">
+      </div>
+      <div class="pilot-name">Sujay V Kulkarni</div>
+      <div class="pilot-shloka">
+        kṣaṇaśaḥ kaṇaśaścaiva vidyāmarthaṃ ca sādhayet<br>
+        kṣaṇe naṣṭe kuto vidyā kaṇe naṣṭe kuto dhanam
+        <div class="pilot-shloka-meaning">
+          Knowledge should be gained through minute by minute efforts. Money should be earned utilizing each and every resource. If you waste time, how can you get knowledge? If you waste resources, how can you accumulate the wealth?
+        </div>
+      </div>
+      <div class="pilot-about">
+        Where technology meets creativity, and learning becomes breath.<br>
+        Serving through technology, science, music, and literature.
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL: Identity map -->
+  <div id="cockpit-right-panel">
+    <div class="panel-glass">
+      <div class="identity-map-title" style="cursor:pointer;" id="map-expand-btn">✦ Identity Map ✦</div>
+      <svg id="identity-map-svg" viewBox="0 -50 340 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="dasaGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#7c3aed" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#4c1d95" stop-opacity="0.6"/>
+          </radialGradient>
+          <radialGradient id="techGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#2563eb" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#1e3a5f" stop-opacity="0.6"/>
+          </radialGradient>
+          <radialGradient id="musicGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#d97706" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#78350f" stop-opacity="0.6"/>
+          </radialGradient>
+          <radialGradient id="exprGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stop-color="#059669" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#064e3b" stop-opacity="0.6"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Joy of Learning orbit ring -->
+        <circle cx="170" cy="155" r="90" fill="none"
+          stroke="rgba(167,139,250,0.45)" stroke-width="1.6" stroke-dasharray="5 6"/>
+        <text x="263" y="90" font-size="9.5" fill="rgba(196,181,253,0.80)"
+          font-family="Courier New" letter-spacing="0.5">Joy of Learning</text>
+
+        <!-- DAASA core -->
+        <circle cx="170" cy="155" r="36" fill="url(#dasaGrad)" filter="url(#glow)" opacity="0.95"/>
+        <circle cx="170" cy="155" r="13" fill="rgba(221,214,254,0.8)" filter="url(#glow)"/>
+        <text x="170" y="159" text-anchor="middle" font-size="11.5" fill="#f3e8ff"
+          font-family="Courier New" font-weight="bold" letter-spacing="1.5">DAASA</text>
+        <text x="170" y="175" text-anchor="middle" font-size="7.5" fill="rgba(220,210,255,0.80)"
+          font-family="Courier New">Vaiṣṇava Dāsa</text>
+
+        <!-- TECH branch (top-left of ring) -->
+        <line x1="135" y1="88" x2="80" y2="44" stroke="rgba(96,165,250,0.6)" stroke-width="1.2"/>
+        <circle cx="78" cy="42" r="28" fill="url(#techGrad)" opacity="0.92"/>
+        <text x="78" y="38" text-anchor="middle" font-size="10" fill="#bfdbfe"
+          font-family="Courier New" font-weight="bold">TECH</text>
+        <!-- Tech sub-nodes -->
+        <line x1="58" y1="20" x2="34" y2="5" stroke="rgba(96,165,250,0.35)" stroke-width="0.9"/>
+        <circle cx="26" cy="2" r="13" fill="rgba(37,99,235,0.65)"/>
+        <text x="26" y="5" text-anchor="middle" font-size="7" fill="#93c5fd" font-family="Courier New">AI/ML</text>
+        <line x1="78" y1="14" x2="78" y2="-4" stroke="rgba(96,165,250,0.35)" stroke-width="0.9"/>
+        <circle cx="78" cy="-14" r="13" fill="rgba(37,99,235,0.65)"/>
+        <text x="78" y="-11" text-anchor="middle" font-size="6.5" fill="#93c5fd" font-family="Courier New">Quantum</text>
+        <line x1="100" y1="18" x2="122" y2="4" stroke="rgba(96,165,250,0.35)" stroke-width="0.9"/>
+        <circle cx="130" cy="0" r="13" fill="rgba(37,99,235,0.65)"/>
+        <text x="130" y="3" text-anchor="middle" font-size="6.5" fill="#93c5fd" font-family="Courier New">Cyber</text>
+
+        <!-- MUSIC branch (top-right of ring) -->
+        <line x1="208" y1="86" x2="265" y2="44" stroke="rgba(251,191,36,0.6)" stroke-width="1.2"/>
+        <circle cx="268" cy="42" r="28" fill="url(#musicGrad)" opacity="0.92"/>
+        <text x="268" y="38" text-anchor="middle" font-size="10" fill="#fde68a"
+          font-family="Courier New" font-weight="bold">MUSIC</text>
+        <!-- Music sub-nodes -->
+        <line x1="290" y1="22" x2="308" y2="4" stroke="rgba(251,191,36,0.35)" stroke-width="0.9"/>
+        <circle cx="316" cy="-2" r="13" fill="rgba(180,83,9,0.65)"/>
+        <text x="316" y="1" text-anchor="middle" font-size="7" fill="#fcd34d" font-family="Courier New">Tabla</text>
+        <line x1="268" y1="14" x2="268" y2="-4" stroke="rgba(251,191,36,0.35)" stroke-width="0.9"/>
+        <circle cx="268" cy="-14" r="13" fill="rgba(180,83,9,0.65)"/>
+        <text x="268" y="-11" text-anchor="middle" font-size="6.5" fill="#fcd34d" font-family="Courier New">Vocal</text>
+
+        <!-- EXPRESSION branch (bottom) -->
+        <line x1="170" y1="245" x2="170" y2="278" stroke="rgba(52,211,153,0.6)" stroke-width="1.2"/>
+        <circle cx="170" cy="305" r="28" fill="url(#exprGrad)" opacity="0.92"/>
+        <text x="170" y="300" text-anchor="middle" font-size="8" fill="#a7f3d0"
+          font-family="Courier New" font-weight="bold">EXPRESSION</text>
+        <text x="170" y="314" text-anchor="middle" font-size="7" fill="rgba(167,240,200,0.75)"
+          font-family="Courier New">Author · Vedanta · Poetry</text>
+        <!-- Expression sub-nodes -->
+        <line x1="145" y1="326" x2="104" y2="348" stroke="rgba(52,211,153,0.35)" stroke-width="0.9"/>
+        <circle cx="92" cy="354" r="14" fill="rgba(4,120,87,0.65)"/>
+        <text x="92" y="357" text-anchor="middle" font-size="7.5" fill="#6ee7b7" font-family="Courier New">Author</text>
+        <line x1="170" y1="333" x2="170" y2="350" stroke="rgba(52,211,153,0.35)" stroke-width="0.9"/>
+        <circle cx="170" cy="362" r="14" fill="rgba(4,120,87,0.65)"/>
+        <text x="170" y="365" text-anchor="middle" font-size="7" fill="#6ee7b7" font-family="Courier New">Vedanta</text>
+        <line x1="196" y1="326" x2="234" y2="346" stroke="rgba(52,211,153,0.35)" stroke-width="0.9"/>
+        <circle cx="246" cy="352" r="14" fill="rgba(4,120,87,0.65)"/>
+        <text x="246" y="355" text-anchor="middle" font-size="7.5" fill="#6ee7b7" font-family="Courier New">Poetry</text>
+
+        <!-- ACHIEVEMENT LOKA (left side) -->
+        <circle cx="52" cy="250" r="24" fill="rgba(236,72,153,0.65)" opacity="0.92" filter="url(#glow)"/>
+        <text x="52" y="246" text-anchor="middle" font-size="7.5" fill="#fbcfe8"
+          font-family="Courier New" font-weight="bold">ACHIEVE</text>
+        <text x="52" y="258" text-anchor="middle" font-size="7" fill="#fbcfe8"
+          font-family="Courier New">LOKA</text>
+        <line x1="70" y1="232" x2="120" y2="195" stroke="rgba(236,72,153,0.35)" stroke-width="0.9" stroke-dasharray="4 4"/>
+
+        <!-- Space Work Station label -->
+        <text x="64" y="74" text-anchor="middle" font-size="6.5" fill="rgba(147,197,253,0.85)"
+          font-family="Courier New">Space Work</text>
+        <text x="64" y="84" text-anchor="middle" font-size="6.5" fill="rgba(147,197,253,0.85)"
+          font-family="Courier New">Station</text>
+        <!-- Milky Way Auditorium label -->
+        <text x="278" y="74" text-anchor="middle" font-size="6.5" fill="rgba(252,211,77,0.85)"
+          font-family="Courier New">Milky Way</text>
+        <text x="278" y="84" text-anchor="middle" font-size="6.5" fill="rgba(252,211,77,0.85)"
+          font-family="Courier New">Auditorium</text>
+
+        <!-- Legend -->
+        <text x="170" y="420" text-anchor="middle" font-size="7.5" fill="rgba(167,139,250,0.65)"
+          font-family="Courier New">— Sujay's Identity Cosmos —</text>
+      </svg>
+      <div class="identity-map-expand-hint">⊕ click to expand</div>
+    </div>
+  </div>
+
+  <!-- CENTER: Orbital context text -->
+  <div id="orbit-context-text">
+    <div class="orbit-context-line1">You are on the <span class="hl-ring">Joy of Learning</span> ring · orbiting <span class="hl-daasa">Nebulae Dāsa</span></div>
+    <div class="orbit-context-line2">(The core of his cosmos is the Nebulae Dāsa · He is, at his core, a Dāsa · A servant of the Divine · Around that core is the "Joy of Learning" ring · Use the controls below to travel)</div>
+  </div>
+
+  <!-- BOTTOM CONTROL PANEL -->
+  <div id="cosmos-control-panel">
+    <div class="control-panel-inner">
+      <!-- Nav buttons -->
+      <div class="nav-buttons-row">
+        <button class="nav-btn" data-section="workstation"
+          data-tip="Academic and work life">
+          🛰 Space Work Station
+        </button>
+        <button class="nav-btn" data-section="auditorium"
+          data-tip="Extracurricular activities">
+          🌌 Milky Way Auditorium
+        </button>
+        <button class="nav-btn" data-section="telescope"
+          data-tip="A place where I express my feelings">
+          🔭 Telescope of Thoughts
+        </button>
+        <button class="nav-btn" data-section="achievement"
+          data-tip="Awards, Achievements and Recognition">
+          🏆 Achievement Loka Tour
+        </button>
+        <button class="nav-btn comms-btn" id="comms-btn"
+          data-tip="Contact me">
+          📡 Communications Console
+        </button>
+      </div>
+      <!-- Socials + eject -->
+      <div class="social-eject-row">
+        <a class="social-icon-btn" href="https://github.com/SujayKulkarni-2211" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a class="social-icon-btn" href="https://huggingface.co/sujayvk-btech23" target="_blank" title="HuggingFace">
+          🤗
+        </a>
+        <a class="social-icon-btn" href="https://www.linkedin.com/in/sujay-kulkarni-51391b286/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a class="social-icon-btn" href="https://www.instagram.com/sujaykulkarni2211/" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a class="social-icon-btn" href="mailto:sujayvkulkarni@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a class="social-icon-btn" href="tel:+919380142763" title="Call">
+          <i class="fas fa-phone"></i>
+        </a>
+        <button class="eject-btn" id="eject-btn" title="Switch to normal website mode">
+          ↑ Eject to Normal Mode
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- end #cosmos-orbit-ui -->
+
+<!-- ── IDENTITY MAP EXPANDED OVERLAY ─────────────────── -->
+<div id="identity-map-overlay">
+  <div class="identity-map-overlay-inner">
+    <button class="identity-map-overlay-close" id="map-overlay-close">✕</button>
+    <div class="identity-map-overlay-title">✦ Sujay's Identity Cosmos ✦</div>
+    <svg viewBox="0 -50 340 520" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="dasaGrad2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#7c3aed" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#4c1d95" stop-opacity="0.6"/>
+        </radialGradient>
+        <radialGradient id="techGrad2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#2563eb" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#1e3a5f" stop-opacity="0.6"/>
+        </radialGradient>
+        <radialGradient id="musicGrad2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#d97706" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#78350f" stop-opacity="0.6"/>
+        </radialGradient>
+        <radialGradient id="exprGrad2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#059669" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#064e3b" stop-opacity="0.6"/>
+        </radialGradient>
+        <filter id="glow2">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <circle cx="170" cy="155" r="90" fill="none" stroke="rgba(167,139,250,0.45)" stroke-width="1.6" stroke-dasharray="5 6"/>
+      <text x="263" y="90" font-size="9.5" fill="rgba(196,181,253,0.80)" font-family="Courier New" letter-spacing="0.5">Joy of Learning</text>
+      <circle cx="170" cy="155" r="36" fill="url(#dasaGrad2)" filter="url(#glow2)" opacity="0.95"/>
+      <circle cx="170" cy="155" r="13" fill="rgba(221,214,254,0.8)" filter="url(#glow2)"/>
+      <text x="170" y="159" text-anchor="middle" font-size="11.5" fill="#f3e8ff" font-family="Courier New" font-weight="bold" letter-spacing="1.5">DAASA</text>
+      <text x="170" y="175" text-anchor="middle" font-size="7.5" fill="rgba(220,210,255,0.80)" font-family="Courier New">Vaiṣṇava Dāsa</text>
+      <!-- TECH -->
+      <line x1="135" y1="88" x2="80" y2="44" stroke="rgba(96,165,250,0.6)" stroke-width="1.2"/>
+      <circle cx="78" cy="42" r="28" fill="url(#techGrad2)" opacity="0.92" style="cursor:pointer" data-warp="workstation"/>
+      <text x="78" y="38" text-anchor="middle" font-size="10" fill="#bfdbfe" font-family="Courier New" font-weight="bold" style="cursor:pointer" data-warp="workstation">TECH</text>
+      <text x="78" y="50" text-anchor="middle" font-size="6.5" fill="rgba(147,197,253,0.75)" font-family="Courier New" style="cursor:pointer" data-warp="workstation">→ Workstation</text>
+      <line x1="58" y1="20" x2="34" y2="5" stroke="rgba(96,165,250,0.35)" stroke-width="0.9"/>
+      <circle cx="26" cy="2" r="13" fill="rgba(37,99,235,0.65)"/>
+      <text x="26" y="5" text-anchor="middle" font-size="7" fill="#93c5fd" font-family="Courier New">AI/ML</text>
+      <line x1="78" y1="14" x2="78" y2="-4" stroke="rgba(96,165,250,0.35)" stroke-width="0.9"/>
+      <circle cx="78" cy="-14" r="13" fill="rgba(37,99,235,0.65)"/>
+      <text x="78" y="-11" text-anchor="middle" font-size="6.5" fill="#93c5fd" font-family="Courier New">Quantum</text>
+      <line x1="100" y1="18" x2="122" y2="4" stroke="rgba(96,165,250,0.35)" stroke-width="0.9"/>
+      <circle cx="130" cy="0" r="13" fill="rgba(37,99,235,0.65)"/>
+      <text x="130" y="3" text-anchor="middle" font-size="6.5" fill="#93c5fd" font-family="Courier New">Cyber</text>
+      <!-- MUSIC -->
+      <line x1="208" y1="86" x2="265" y2="44" stroke="rgba(251,191,36,0.6)" stroke-width="1.2"/>
+      <circle cx="268" cy="42" r="28" fill="url(#musicGrad2)" opacity="0.92" style="cursor:pointer" data-warp="auditorium"/>
+      <text x="268" y="38" text-anchor="middle" font-size="10" fill="#fde68a" font-family="Courier New" font-weight="bold" style="cursor:pointer" data-warp="auditorium">MUSIC</text>
+      <text x="268" y="50" text-anchor="middle" font-size="6.5" fill="rgba(252,211,77,0.75)" font-family="Courier New" style="cursor:pointer" data-warp="auditorium">→ Auditorium</text>
+      <line x1="290" y1="22" x2="308" y2="4" stroke="rgba(251,191,36,0.35)" stroke-width="0.9"/>
+      <circle cx="316" cy="-2" r="13" fill="rgba(180,83,9,0.65)"/>
+      <text x="316" y="1" text-anchor="middle" font-size="7" fill="#fcd34d" font-family="Courier New">Tabla</text>
+      <line x1="268" y1="14" x2="268" y2="-4" stroke="rgba(251,191,36,0.35)" stroke-width="0.9"/>
+      <circle cx="268" cy="-14" r="13" fill="rgba(180,83,9,0.65)"/>
+      <text x="268" y="-11" text-anchor="middle" font-size="6.5" fill="#fcd34d" font-family="Courier New">Vocal</text>
+      <!-- EXPRESSION -->
+      <line x1="170" y1="245" x2="170" y2="278" stroke="rgba(52,211,153,0.6)" stroke-width="1.2"/>
+      <circle cx="170" cy="305" r="28" fill="url(#exprGrad2)" opacity="0.92" style="cursor:pointer" data-warp="telescope"/>
+      <text x="170" y="300" text-anchor="middle" font-size="8" fill="#a7f3d0" font-family="Courier New" font-weight="bold" style="cursor:pointer" data-warp="telescope">EXPRESSION</text>
+      <text x="170" y="314" text-anchor="middle" font-size="7" fill="rgba(167,240,200,0.75)" font-family="Courier New">Author · Vedanta · Poetry</text>
+      <text x="170" y="325" text-anchor="middle" font-size="6.5" fill="rgba(110,231,183,0.65)" font-family="Courier New" style="cursor:pointer" data-warp="telescope">→ Telescope</text>
+      <line x1="145" y1="326" x2="104" y2="348" stroke="rgba(52,211,153,0.35)" stroke-width="0.9"/>
+      <circle cx="92" cy="354" r="14" fill="rgba(4,120,87,0.65)"/>
+      <text x="92" y="357" text-anchor="middle" font-size="7.5" fill="#6ee7b7" font-family="Courier New">Author</text>
+      <line x1="170" y1="333" x2="170" y2="350" stroke="rgba(52,211,153,0.35)" stroke-width="0.9"/>
+      <circle cx="170" cy="362" r="14" fill="rgba(4,120,87,0.65)"/>
+      <text x="170" y="365" text-anchor="middle" font-size="7" fill="#6ee7b7" font-family="Courier New">Vedanta</text>
+      <line x1="196" y1="326" x2="234" y2="346" stroke="rgba(52,211,153,0.35)" stroke-width="0.9"/>
+      <circle cx="246" cy="352" r="14" fill="rgba(4,120,87,0.65)"/>
+      <text x="246" y="355" text-anchor="middle" font-size="7.5" fill="#6ee7b7" font-family="Courier New">Poetry</text>
+      <!-- ACHIEVEMENT LOKA -->
+      <circle cx="52" cy="250" r="24" fill="rgba(236,72,153,0.65)" opacity="0.92" filter="url(#glow2)" style="cursor:pointer" data-warp="achievement"/>
+      <text x="52" y="246" text-anchor="middle" font-size="7.5" fill="#fbcfe8" font-family="Courier New" font-weight="bold">ACHIEVE</text>
+      <text x="52" y="258" text-anchor="middle" font-size="7" fill="#fbcfe8" font-family="Courier New">LOKA</text>
+      <text x="52" y="270" text-anchor="middle" font-size="6" fill="rgba(251,207,232,0.65)" font-family="Courier New" style="cursor:pointer" data-warp="achievement">→ Tour</text>
+      <line x1="70" y1="232" x2="120" y2="195" stroke="rgba(236,72,153,0.35)" stroke-width="0.9" stroke-dasharray="4 4"/>
+      <!-- Labels -->
+      <text x="64" y="74" text-anchor="middle" font-size="6.5" fill="rgba(147,197,253,0.85)" font-family="Courier New">Space Work</text>
+      <text x="64" y="84" text-anchor="middle" font-size="6.5" fill="rgba(147,197,253,0.85)" font-family="Courier New">Station</text>
+      <text x="278" y="74" text-anchor="middle" font-size="6.5" fill="rgba(252,211,77,0.85)" font-family="Courier New">Milky Way</text>
+      <text x="278" y="84" text-anchor="middle" font-size="6.5" fill="rgba(252,211,77,0.85)" font-family="Courier New">Auditorium</text>
+      <text x="170" y="420" text-anchor="middle" font-size="7.5" fill="rgba(167,139,250,0.65)" font-family="Courier New">— Sujay's Identity Cosmos —</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ── WARP TUNNEL OVERLAY ─────────────────────────────── -->
+<div id="warp-overlay">
+  <canvas id="warp-canvas"></canvas>
+</div>
+
+<!-- ── THREE.JS ──────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- ── COSMOS MODULES ────────────────────────────────── -->
+<script src="js/cosmos/audio.js"></script>
+<script src="js/cosmos/world.js"></script>
+<script src="js/cosmos/ship.js"></script>
+<script src="js/cosmos/loader.js"></script>
+<script src="js/cosmos/app.js"></script>
+
+<!-- ── SECTIONS ──────────────────────────────────────── -->
+<script src="js/cosmos/sections/workstation.js"></script>
+<script src="js/cosmos/sections/auditorium.js"></script>
+<script src="js/cosmos/sections/telescope.js"></script>
+<script src="js/cosmos/sections/achievement.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="js/cosmos/sections/comms.js"></script>
+<script src="js/cosmos/sections/sections.js"></script>
+
+<!-- ── UI INTERACTIONS ───────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  function identityMapSvg() {
+    const leaves = [
+      ['Innovation',92,76,'#93c5fd'], ['AIML',150,42,'#93c5fd'], ['Quantum',220,38,'#93c5fd'],
+      ['Product Dev',286,68,'#93c5fd'], ['Research',322,130,'#93c5fd'], ['Web Dev',302,198,'#93c5fd'],
+      ['App Dev',244,238,'#93c5fd'], ['Cloud',170,234,'#93c5fd'], ['DevOps',104,196,'#93c5fd'],
+      ['Tabla',680,80,'#fcd34d'], ['Harmonium',760,120,'#fcd34d'], ['Vocal',746,200,'#fcd34d'], ['Music Composition',650,238,'#fcd34d'],
+      ['Literature',114,470,'#6ee7b7'], ['Kannada',178,520,'#6ee7b7'], ['Sanskrit',262,540,'#6ee7b7'], ['Hindi',348,520,'#6ee7b7'],
+      ['Vedanta',430,480,'#6ee7b7'], ['Poetry',488,420,'#6ee7b7'], ['Writing',444,360,'#6ee7b7'], ['Compositions',330,342,'#6ee7b7']
+    ];
+    const leafNodes = leaves.map(([label,x,y,color]) => `
+      <circle class="map-leaf" cx="${x}" cy="${y}" r="21" fill="${color}" fill-opacity=".18" stroke="${color}" stroke-opacity=".7" stroke-width="1.2"/>
+      <text x="${x}" y="${y+4}" text-anchor="middle" class="map-leaf-text" fill="${color}">${label}</text>
+    `).join('');
+    const techLinks = leaves.slice(0,9).map(([,x,y]) => `<line x1="218" y1="152" x2="${x}" y2="${y}" class="map-link tech-link"/>`).join('');
+    const musicLinks = leaves.slice(9,13).map(([,x,y]) => `<line x1="658" y1="170" x2="${x}" y2="${y}" class="map-link music-link"/>`).join('');
+    const exprLinks = leaves.slice(13).map(([,x,y]) => `<line x1="330" y1="420" x2="${x}" y2="${y}" class="map-link expr-link"/>`).join('');
+
+    return `
+      <defs>
+        <radialGradient id="mapDasa" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity=".96"/>
+          <stop offset="32%" stop-color="#d8b4fe" stop-opacity=".62"/>
+          <stop offset="100%" stop-color="#7c3aed" stop-opacity=".62"/>
+        </radialGradient>
+        <filter id="mapGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <style>
+          .map-label{font-family:'Courier New',monospace;font-weight:700;letter-spacing:.08em}
+          .map-small{font-family:'Courier New',monospace;font-size:12px;letter-spacing:.04em;opacity:.68}
+          .map-zone-text{font-family:'Courier New',monospace;font-weight:700;font-size:18px;letter-spacing:.08em}
+          .map-portal-text{font-family:'Courier New',monospace;font-weight:700;font-size:12px;letter-spacing:.05em}
+          .map-leaf-text{font-family:'Courier New',monospace;font-size:10px;font-weight:700;paint-order:stroke;stroke:#080217;stroke-width:3px;stroke-linejoin:round}
+          .map-link{stroke-width:1.2;opacity:.42}
+          .tech-link{stroke:#60a5fa}.music-link{stroke:#fbbf24}.expr-link{stroke:#34d399}
+          .map-warp{cursor:pointer}.map-warp:hover circle{filter:url(#mapGlow);stroke-width:2.5}
+          .map-warp:hover text{fill:#fff}
+        </style>
+      </defs>
+
+      <rect x="12" y="12" width="836" height="560" rx="28" fill="rgba(8,2,24,.58)" stroke="rgba(196,181,253,.28)" stroke-width="1.5"/>
+
+      
+
+
+
+<defs>
+  <path id="learningRingPath"
+        d="
+        M 430 250
+        m -132 0
+        a 132 132 0 1 1 264 0
+        a 132 132 0 1 1 -264 0
+        " />
+</defs>
+
+<text font-family="'Courier New', monospace"
+      font-size="8"
+      letter-spacing="0.16em"
+      fill="rgba(255,255,255,0.78)">
+  <textPath href="#learningRingPath"
+            startOffset="15%">
+    ✦ RING OF "Joy of Learning" ✦
+  </textPath>
+</text>
+
+<circle cx="430" cy="250" r="118"
+
+
+stroke="rgba(220,200,255,.95)"
+stroke-width="3.2"
+stroke-dasharray="14 10"
+fill="none"
+opacity=".92" fill="rgba(8,2,24,.58)" 
+
+
+<circle cx="430" cy="250" r="118"
+
+stroke="rgba(220,200,255,.95)"
+stroke-width="3.2"
+stroke-dasharray="14 10"
+fill="none"
+opacity=".92"  stroke-dasharray="8 9"/>
+      <text x="430" y="168" text-anchor="middle" class="map-label" fill="#ddd6fe" font-size="18"></text>
+
+      <circle cx="430" cy="250" r="46" fill="url(#mapDasa)" filter="url(#mapGlow)"/>
+      <text x="430" y="255" text-anchor="middle" class="map-label" fill="#ffffff" font-size="20">DASA</text>
+      <text x="430" y="278" text-anchor="middle" class="map-small" fill="#ede9fe">core of the cosmos</text>
+
+      
+      <line x1="538" y1="218" x2="658" y2="170" class="map-link music-link"/>
+     <line x1="383" y1="375" x2="330" y2="420" class="map-link expr-link"/>
+      <line x1="470" y1="290" x2="720" y2="520" stroke="#f472b6" stroke-opacity=".68" stroke-width="1.2" stroke-dasharray="5 6"/>
+
+      ${techLinks}${musicLinks}${exprLinks}
+
+      <g class="map-warp" data-warp="workstation">
+        <circle cx="192" cy="138" r="58" fill="#1d4ed8" fill-opacity=".22" stroke="#60a5fa" stroke-opacity=".9" stroke-width="1.5"/>
+        <text x="205" y="144" text-anchor="middle" class="map-zone-text" fill="#bfdbfe">TECH &amp;</text>
+        <text x="205" y="166" text-anchor="middle" class="map-zone-text" fill="#bfdbfe">SCIENCE</text>
+        <rect x="134" y="272" width="168" height="38" rx="12" fill="#172554" fill-opacity=".74" stroke="#60a5fa" stroke-opacity=".75"/>
+        <text x="205" y="294" text-anchor="middle" class="map-portal-text" fill="#bfdbfe">Space Work Station</text>
+      </g>
+
+      <g class="map-warp" data-warp="auditorium">
+        <circle cx="658" cy="170" r="54" fill="#b45309" fill-opacity=".22" stroke="#fbbf24" stroke-opacity=".9" stroke-width="1.5"/>
+        <text x="645" y="182" text-anchor="middle" class="map-zone-text" fill="#fde68a">MUSIC</text>
+        <rect x="564" y="280" width="188" height="38" rx="12" fill="#451a03" fill-opacity=".74" stroke="#fbbf24" stroke-opacity=".75"/>
+        <text x="645" y="302" text-anchor="middle" class="map-portal-text" fill="#fde68a">Milky Way Auditorium</text>
+      </g>
+
+      <g class="map-warp" data-warp="telescope">
+        <circle cx="330" cy="438" r="68" fill="#047857" fill-opacity=".22" stroke="#34d399" stroke-opacity=".9" stroke-width="1.5"/>
+        <text x="330" y="452"text-anchor="middle" class="map-zone-text" fill="#a7f3d0">EXPRESSION</text>
+        <rect x="470" y="425" width="220" height="38" rx="12" fill="#052e24" fill-opacity=".74" stroke="#34d399" stroke-opacity=".75"/>
+        <text x="580" y="450" text-anchor="middle" class="map-portal-text" fill="#a7f3d0">Telescope of Thoughts</text>
+      </g>
+
+      <g class="map-warp" data-warp="achievement">
+        <circle cx="720" cy="520" r="58" fill="#db2777" fill-opacity=".34" stroke="#f472b6" stroke-opacity=".95" stroke-width="1.5"/>
+        <text x="720" y="510" text-anchor="middle" class="map-zone-text" font-size="15" fill="#fbcfe8">ACHIEVEMENT</text>
+        <text x="720" y="530" text-anchor="middle" class="map-zone-text" font-size="15" fill="#fbcfe8">LOKA</text>
+      </g>
+
+      ${leafNodes}
+    `;
+  }
+
+  function renderIdentityMaps() {
+    const small = document.getElementById('identity-map-svg');
+    if (small) {
+      small.setAttribute('viewBox', '0 -20 860 720');
+      small.innerHTML = identityMapSvg();
+    }
+    const overlaySvg = document.querySelector('.identity-map-overlay-inner svg');
+    if (overlaySvg) {
+      overlaySvg.setAttribute('viewBox', '0 -20 860 720');
+      overlaySvg.innerHTML = identityMapSvg();
+    }
+  }
+
+  renderIdentityMaps();
+
+  // Show cockpit panels + context text after entering
+  function showCockpitPanels() {
+    setTimeout(() => {
+      document.getElementById('cockpit-left-panel').classList.add('visible');
+      document.getElementById('cockpit-right-panel').classList.add('visible');
+      document.getElementById('orbit-context-text').classList.add('visible');
+    }, 900);
+  }
+
+  // Wire CosmosLoader.onEnter callback for UI
+  const _origOnEnter = CosmosLoader.onEnter;
+  // We patch after scripts load — app.js sets it first, we add ours
+  window.addEventListener('load', () => {
+    // Listen for when orbit UI appears (indirect signal)
+    const orbitUI = document.getElementById('cosmos-orbit-ui');
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach(m => {
+        if (m.type === 'attributes' && m.attributeName === 'style') {
+          if (orbitUI.style.display !== 'none') {
+            showCockpitPanels();
+            observer.disconnect();
+          }
+        }
+      });
+    });
+    observer.observe(orbitUI, { attributes: true });
+  });
+
+  // Navigation — handled by Cosmossections
+  Cosmossections.init();
+
+  // Eject to normal mode
+  document.getElementById('eject-btn').addEventListener('click', () => {
+    CosmosAudio.init();
+    CosmosAudio.resume();
+    CosmosAudio.playClick();
+    window.location.href = 'index.html?mode=normal';
+  });
+
+  // ── IDENTITY MAP EXPAND ─────────────────────────────────
+  const mapOverlay    = document.getElementById('identity-map-overlay');
+  const mapCloseBtn   = document.getElementById('map-overlay-close');
+  const mapExpandBtn  = document.getElementById('map-expand-btn');
+
+  function openMapOverlay() {
+    mapOverlay.style.display = 'flex';
+    requestAnimationFrame(() => mapOverlay.classList.add('open'));
+  }
+  function closeMapOverlay() {
+    mapOverlay.classList.remove('open');
+    setTimeout(() => { mapOverlay.style.display = 'none'; }, 400);
+  }
+
+  mapExpandBtn.addEventListener('click', openMapOverlay);
+  // Also open when clicking the small panel SVG itself
+  document.getElementById('identity-map-svg').addEventListener('click', openMapOverlay);
+  mapCloseBtn.addEventListener('click', closeMapOverlay);
+  mapOverlay.addEventListener('click', (e) => {
+    if (e.target === mapOverlay) closeMapOverlay();
+  });
+
+  // ── WARP FROM IDENTITY MAP NODE ──────────────────────────
+  // Click on a [data-warp] element inside the overlay → close overlay then warp
+  mapOverlay.querySelectorAll('[data-warp]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const section = el.getAttribute('data-warp');
+      closeMapOverlay();
+      CosmosAudio.init();
+      CosmosAudio.resume();
+      setTimeout(() => Cosmossections.navigateTo(section), 420);
+    });
+  });
+
+  // ── WARP TUNNEL ANIMATION ────────────────────────────────
+  function _doWarp(section) {
+    CosmosAudio.playWarp();
+    const overlay = document.getElementById('warp-overlay');
+    const canvas  = document.getElementById('warp-canvas');
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext('2d');
+    overlay.classList.add('active');
+
+    const cx = canvas.width  / 2;
+    const cy = canvas.height / 2;
+    const lines = Array.from({ length: 120 }, () => {
+      const angle = Math.random() * Math.PI * 2;
+      const dist  = 20 + Math.random() * 180;
+      return {
+        angle,
+        dist,
+        speed: 6 + Math.random() * 14,
+        len:   8  + Math.random() * 60,
+        col:   Math.random() < 0.5 ? `rgba(167,139,250,` : `rgba(196,220,255,`,
+      };
+    });
+
+    let frame = 0;
+    const TOTAL = 80; // frames (~1.3s at 60fps)
+
+    function drawFrame() {
+      const progress = frame / TOTAL;
+      // Background fade to white at peak, then black
+      const whiteness = progress < 0.6 ? progress / 0.6 : (1 - progress) / 0.4;
+      ctx.fillStyle = `rgba(0,0,10,${0.35 + whiteness * 0.2})`;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      lines.forEach(l => {
+        const stretch = 1 + progress * 18;
+        const r0 = l.dist * stretch;
+        const r1 = r0 + l.len * stretch;
+        const x0 = cx + Math.cos(l.angle) * r0;
+        const y0 = cy + Math.sin(l.angle) * r0;
+        const x1 = cx + Math.cos(l.angle) * r1;
+        const y1 = cy + Math.sin(l.angle) * r1;
+        const alpha = Math.min(0.85, progress * 2.5);
+        ctx.strokeStyle = l.col + alpha + ')';
+        ctx.lineWidth   = 1.2 + progress * 2;
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+      });
+
+      // White flash at peak
+      if (progress > 0.55 && progress < 0.75) {
+        const flashAlpha = Math.sin((progress - 0.55) / 0.2 * Math.PI) * 0.85;
+        ctx.fillStyle = `rgba(240,230,255,${flashAlpha})`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      frame++;
+      if (frame <= TOTAL) {
+        requestAnimationFrame(drawFrame);
+      } else {
+        overlay.classList.remove('active');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        Cosmossections.navigateTo(section);
+      }
+    }
+    requestAnimationFrame(drawFrame);
+  }
+
+})();
+</script>
+
+</body>
+</html>

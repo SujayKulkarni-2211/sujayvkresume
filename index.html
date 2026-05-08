@@ -1,162 +1,235 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sujay Kulkarni</title>
-  <!-- Link Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Link W3.CSS -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <script src="https://kit.fontawesome.com/9f8c0801f0.js" crossorigin="anonymous"></script>
-  <!-- Your Custom CSS -->
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sujay V Kulkarni</title>
+<script src="https://kit.fontawesome.com/9f8c0801f0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/normal.css">
+<script>
+  // Redirect to cosmos on desktop unless ejected
+  (function () {
+    const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
+    const ejected  = new URLSearchParams(location.search).get('mode') === 'normal';
+    if (!isMobile && !ejected) {
+      location.replace('cosmos.html');
+    }
+    // Restore saved theme
+    const saved = localStorage.getItem('nm-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
 </head>
-  
+<body>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="80">
-
-  <!-- Optional Header Above Navbar -->
-  <div class="w3-display-container appearAnima">
-    <img src="images/headderimg-cropped.png" alt="Lights" class="img-fluid" >
-    <div class="w3-display-bottommiddle w3-container"></div>
+<!-- ── NAVBAR ──────────────────────────────────────────────── -->
+<nav class="nm-nav">
+  <a class="nm-brand" href="index.html?mode=normal">Sujay <span>V Kulkarni</span></a>
+  <ul class="nm-links">
+    <li><a href="index.html?mode=normal" class="active">Home</a></li>
+    <li><a href="swroom.html">Work &amp; Study</a></li>
+    <li><a href="persaudi.html">Auditorium</a></li>
+    <li><a href="balcony.html">Thoughts &amp; Blogs</a></li>
+    <li><a href="svkachievements.html">Achievements</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nm-right">
+    <button class="nm-theme-btn" id="theme-toggle" title="Toggle theme">🌙</button>
+    <a class="nm-cosmos-btn" href="cosmos.html">✦ Enter Cosmos</a>
+    <button class="nm-hamburger" id="hamburger">☰</button>
   </div>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-secondary sticky-top appearAnima" style="width: 100%;">
-    <div class="container-fluid">
-      <!-- Brand -->
-      <a class="navbar-brand" href="#">Sujay V Kulkarni</a>
-      <!-- Hamburger for Small Screens -->
-      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+</nav>
+<div class="nm-mobile-menu" id="mobile-menu">
+  <a href="index.html?mode=normal">Home</a>
+  <a href="swroom.html">Work &amp; Study</a>
+  <a href="persaudi.html">Auditorium</a>
+  <a href="balcony.html">Thoughts &amp; Blogs</a>
+  <a href="svkachievements.html">Achievements</a>
+  <a href="contact.html">Contact</a>
+  <a href="cosmos.html">✦ Enter Cosmos</a>
+</div>
 
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <!-- Navbar Links -->
-        <ul class="navbar-nav justify-content-center">
-          <li class="nav-item"><a class="nav-link active" href="index.html" data-toggle="tooltip" data-placement="bottom" title="Home">Entrance</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" data-toggle="dropdown" data-placement="bottom" title="Go through my academic life">Study/Work Room &darr;</a>
-            <div class="dropdown-menu animated fadeInDown" aria-labelledby="aboutDropdown">
-              <a class="dropdown-item" href="swroom.html"> Explore Study/ Work Room</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="swroom.html#profile">Profile</a>
-              <a class="dropdown-item" href="swroom.html#projects">Projects</a>
-              <a class="dropdown-item" href="swroom.html#skillss">Skills</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="swroom.html#education">Education</a>
-              <a class="dropdown-item" href="swroom.html#work-experience">Experience</a>
-              <a class="dropdown-item" href="swroom.html#interests">Areas Of Interest</a>
-              <a class="dropdown-item" href="swroom.html#projects">Web Development</a>
-              <a class="dropdown-item" href="swroom.html#datapro">Data Science</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="persaudi.html" id="auditoriumDropdown" data-toggle="dropdown" data-placement="bottom" title="Extracurricular activities">Personal Auditorium &darr;</a>
-            <div class="dropdown-menu animated fadeInDown" aria-labelledby="auditoriumDropdown">
-              <a class="dropdown-item" href="persaudi.html"> Pesonal Auditorium </a>
-                <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="persaudi.html#poems">Poems</a>
-              <a class="dropdown-item" href="persaudi.html#tabla">Music</a>
-              
-              <a class="dropdown-item" href="persaudi.html#speeches">Speeches</a>
-              <a class="dropdown-item" href="persaudi.html#others">Others</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="balcony.html" id="balconyDropdown" data-toggle="dropdown" data-placement="bottom" title="Space where I express my opnions and feelings!">Balcony &darr;</a>
-            <div class="dropdown-menu animated fadeInDown" aria-labelledby="balconyDropdown">
-              <a class="dropdown-item" href="balcony.html"> Balcony </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="balcony.html#blogs">Blogs</a>
-                <a class="dropdown-item" href="balcony.html#posts">Posts</a>
-            </div>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="svkachievements.html" data-toggle="tooltip" data-placement="bottom" title="Appraise my achievements!">Wall of Achievements</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html" data-toggle="tooltip" data-placement="bottom" title="Connect with me">Knock Knock</a></li>
-        </ul>
-        
-      </div>
-    </div>
-  </nav>
-
-  <div class="main-content">
-    <div class="welcome-section" id="entranceQuote">
-      <blockquote class="blockquote">
-        <p class="mb-0"><strong> kṣaṇaśaḥ kaṇaśaścaiva vidyāmarthaṃ ca sādhayet</p>
-        <p class="mb-0">kṣaṇe naṣṭe kuto vidyā kaṇe naṣṭe kuto dhanam </strong></p>
-        <p>Knowledge should be gained through minute by minute efforts. Money should be earned utilizing each and every resource. If you waste time, how can you get knowledge? If you waste resources, how can you accumulate the wealth?</p>
-        <a href="https://sa.wikiquote.org/wiki/%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%A3%E0%A4%B6%E0%A4%83_%E0%A4%95%E0%A4%A3%E0%A4%B6%E0%A4%B6%E0%A5%8D%E0%A4%9A%E0%A5%88%E0%A4%B5..."><foot class="blockquote-footer">Source: <cite title="Source">Wikiquote</cit></foot></a>
-      </blockquote>
-      <p class="lead">Welcome to a space dedicated to continuous learning and prosperity. As the ancient wisdom suggests, knowledge and wealth are earned moment by moment. Here, every second counts, and each resource is a stepping stone to success. Join me on this journey, where every effort brings you closer to a wealth of knowledge and opportunities.</p>
+<!-- ── HERO BAND ────────────────────────────────────────────── -->
+<div class="nm-hero-band">
+  <div class="nm-container">
+    <div class="nm-hero-band-text">
+      Engineer · Researcher · Tabla Artist · Author · Seeker
     </div>
   </div>
- <div class="main-content">
-    <div class="welcome-section" id="entranceQuote">
-      <div w3-row>
-      <div class="w3-col l6 s6 m6 ">
-      
-      </div>
-      <div class="w3-col l6  m6">
-       <img class="img-thumbnail" src="images/sujayrv_cleanup.jpeg" width="95%" height="250px" style="margin-right: 5px;">
-      </div>
-    </div>
-      <p class="lead" style="text-align: left; margin-left: 5px;"><strong class="font-weight-bold">About me</strong> <br> Welcome to my digital space! I am Sujay V Kulkarni, a passionate and creative college student at RV University. With a solid foundation in HTML, CSS, Javascript and C, I enjoy bringing ideas to life through web development. My journey extends beyond coding; I am also skilled in project management, effective communication, and analytical thinking. Being a devotee and musician from a family of music enthusiasts, my spiritual journey began early. Inspired by haridasas, I intend to serve the Lord through music and literature. Join me on this exploration where technology meets creativity, and let's embark on a journey of continuous learning, innovation, and spiritual fulfillment. May Goddess Saraswati bless all of us so that all our troubles and ignorance go away, and may learning become our breath.</p>
-    </div>
-  </div>
-  
- <!-- div id="communique" class="communique">
-  <p><a href="">Hi check out my new website: <span class="badge badge-primary"><i class="fa fa-hand-o-left" aria-hidden="true"></i></span></a></p>
- </div -->
-  <footer class="footer">
-    <div class="container-fluid">
-      <div class="row d-flex justify-content-between">
-        <div class="col slideFromLeft">
-          <!-- Footer Options -->
-          <ul class="footer-options slideFromLeft">
-            <li><a href="SujayResume.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Download Resume</a></li>
-            <li><a href="mailto:sujaykulkarni2211@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i> Mail me </a></li>
-            <li><a href="tel:9113518404">&phone; Call me</a></li>
-            <!-- Add more options as needed -->
-          </ul>
+</div>
+
+<!-- ── HERO ────────────────────────────────────────────────── -->
+<div class="nm-container">
+  <section class="nm-hero">
+    <div class="nm-hero-inner">
+      <img class="nm-hero-photo" src="images/sujayrv_cleanup.jpeg" alt="Sujay V Kulkarni">
+      <div>
+        <div class="nm-hero-name">Sujay V Kulkarni</div>
+        <div class="nm-hero-shloka">
+          kṣaṇaśaḥ kaṇaśaścaiva vidyāmarthaṃ ca sādhayet<br>
+          kṣaṇe naṣṭe kuto vidyā kaṇe naṣṭe kuto dhanam
+          <div class="nm-hero-shloka-meaning">
+            Knowledge should be gained through minute by minute efforts. Money should be earned utilizing each and every resource. If you waste time, how can you get knowledge? If you waste resources, how can you accumulate the wealth?
+          </div>
         </div>
-
-
-
-        <div class="col text-right  slidedown">
-          <!-- Social Media Icons -->
-          <ul class="social-icons">
-            <li><a href="https://www.linkedin.com/in/sujay-kulkarni-51391b286/" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Visit my linkedin page"><i class="fab fa fa-linkedin-square" ></i></a></li>
-            
-            <li><a href="https://www.instagram.com/sujaykulkarni2211/" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist my Instagram Page"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="https://github.com/SujayKulkarni-2211" class="social-icon" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Vist my Github Page"><i class="fab fa-brands fa-github"></i></a></li>
-            
-          </ul>
-        </div>
-      </div>
-      <br>
-      <hr>
-      <div class="row  ">
-        <!-- Copyright and Privacy Policy -->
-        <div class="col-sm-12 col-xl-12 footer-text text-center slideup d-flex justify-content-center">
-          <p><a href="">&copy; </a>Sujay V Kulkarni
-            <a href="#">Privacy Policy</a>
-          </p>
+        <div class="nm-hero-about">
+          Where technology meets creativity, and learning becomes breath.<br>
+          Serving through technology, science, music, and literature.
         </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Link Bootstrap JS -->
-  
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- ── IDENTITY MAP ─────────────────────────────────────── -->
+  <section class="nm-section">
+    <div class="nm-section-title">Identity Map</div>
+    <div class="nm-map">
 
-  
-  <script src="script.js"></script>
+      <!-- Core -->
+      <div class="nm-map-core">Dasa · Fun in Learning</div>
+      <div class="nm-map-core-line"></div>
+
+      <!-- 4 branches -->
+      <div class="nm-map-branches">
+
+        <div class="nm-map-branch">
+          <div class="nm-map-branch-line"></div>
+          <a class="nm-map-node tech" href="swroom.html">
+            <div class="nm-map-node-icon">🛰</div>
+            <span class="nm-map-node-label">Tech</span>
+          </a>
+          <div class="nm-map-leaves">
+            <span class="nm-leaf tech-leaf">AI &amp; ML</span>
+            <span class="nm-leaf tech-leaf">Quantum</span>
+            <span class="nm-leaf tech-leaf">Innovation</span>
+            <span class="nm-leaf tech-leaf">Product Dev</span>
+            <span class="nm-leaf tech-leaf">Research</span>
+            <span class="nm-leaf tech-leaf">Web Dev</span>
+            <span class="nm-leaf tech-leaf">App Dev</span>
+            <span class="nm-leaf tech-leaf">Cloud</span>
+            <span class="nm-leaf tech-leaf">DevOps</span>
+          </div>
+        </div>
+
+        <div class="nm-map-branch">
+          <div class="nm-map-branch-line"></div>
+          <a class="nm-map-node music" href="persaudi.html#tabla">
+            <div class="nm-map-node-icon">🎵</div>
+            <span class="nm-map-node-label">Music</span>
+          </a>
+          <div class="nm-map-leaves">
+            <span class="nm-leaf music-leaf">Tabla</span>
+            <span class="nm-leaf music-leaf">Harmonium</span>
+            <span class="nm-leaf music-leaf">Vocal</span>
+            <span class="nm-leaf music-leaf">Composition</span>
+          </div>
+        </div>
+
+        <div class="nm-map-branch">
+          <div class="nm-map-branch-line"></div>
+          <a class="nm-map-node expr" href="persaudi.html">
+            <div class="nm-map-node-icon">✍</div>
+            <span class="nm-map-node-label">Expression</span>
+          </a>
+          <div class="nm-map-leaves">
+            <span class="nm-leaf expr-leaf">Literature</span>
+            <span class="nm-leaf expr-leaf">Kannada</span>
+            <span class="nm-leaf expr-leaf">Sanskrit</span>
+            <span class="nm-leaf expr-leaf">Hindi</span>
+            <span class="nm-leaf expr-leaf">Vedanta</span>
+            <span class="nm-leaf expr-leaf">Poetry</span>
+            <span class="nm-leaf expr-leaf">Writing</span>
+            <span class="nm-leaf expr-leaf">Compositions</span>
+          </div>
+        </div>
+
+        <div class="nm-map-branch">
+          <div class="nm-map-branch-line"></div>
+          <a class="nm-map-node achiev" href="svkachievements.html">
+            <div class="nm-map-node-icon">🏆</div>
+            <span class="nm-map-node-label">Achieve</span>
+          </a>
+          <div class="nm-map-leaves">
+            <span class="nm-leaf achiev-leaf">Best Paper</span>
+            <span class="nm-leaf achiev-leaf">Patent</span>
+            <span class="nm-leaf achiev-leaf">Manthan</span>
+            <span class="nm-leaf achiev-leaf">IEEE VC</span>
+            <span class="nm-leaf achiev-leaf">RUDRA</span>
+            <span class="nm-leaf achiev-leaf">MUN Chair</span>
+            <span class="nm-leaf achiev-leaf">Nat. Awards</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QUICK HIGHLIGHTS ─────────────────────────────────── -->
+  <section class="nm-section">
+    <div class="nm-section-title">Highlights</div>
+    <div class="nm-cards">
+      <div class="nm-card">
+        <div class="nm-badge nm-badge-gold">Best Paper · ICAICS 2025</div>
+        <div class="nm-card-title">Quantum Entropy-Driven Temperature Scaling</div>
+        <div class="nm-card-desc">Published in Springer — 26.7% hallucination reduction in LLMs using quantum-inspired temperature calibration.</div>
+      </div>
+      <div class="nm-card">
+        <div class="nm-badge">Startup</div>
+        <div class="nm-card-title">Goodwinsun</div>
+        <div class="nm-card-desc">Founder &amp; CEO — building production-grade AI and SaaS products. FKCCI Manthan 2025 Finalist, Karnataka Elevate 2024 Finalist.</div>
+      </div>
+      <div class="nm-card">
+        <div class="nm-badge">International Artist</div>
+        <div class="nm-card-title">Tabla &amp; Music</div>
+        <div class="nm-card-desc">International Tabla Artist. Sangeeta Prabhakar National Award. Chamundeshwari National Award. Performed in Sri Lanka.</div>
+      </div>
+      <div class="nm-card">
+        <div class="nm-badge">Published Author</div>
+        <div class="nm-card-title">The Adventures of Detective Sujay</div>
+        <div class="nm-card-desc">Published fiction — a detective adventure series. Also a Halgannada poet with poems published in "Pranava" magazine.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── FOOTER ───────────────────────────────────────────────── -->
+<footer class="nm-footer">
+  <div class="nm-footer-inner">
+    <div class="nm-footer-links">
+      <a href="SujayResume.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+      <a href="mailto:sujaykulkarni2211@gmail.com"><i class="fa fa-envelope"></i> Email</a>
+      <a href="tel:9380142763"><i class="fa fa-phone"></i> Call</a>
+    </div>
+    <div class="nm-socials">
+      <a href="https://www.linkedin.com/in/sujay-kulkarni-51391b286/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/SujayKulkarni-2211" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/sujaykulkarni2211/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="nm-footer-copy">© Sujay V Kulkarni</div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  const html   = document.documentElement;
+  const btn    = document.getElementById('theme-toggle');
+  const burger = document.getElementById('hamburger');
+  const menu   = document.getElementById('mobile-menu');
+
+  function setTheme(t) {
+    html.setAttribute('data-theme', t);
+    localStorage.setItem('nm-theme', t);
+    btn.textContent = t === 'dark' ? '☀️' : '🌙';
+  }
+  setTheme(localStorage.getItem('nm-theme') || 'light');
+
+  btn.addEventListener('click', () => {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  burger.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+</script>
 </body>
-
 </html>
