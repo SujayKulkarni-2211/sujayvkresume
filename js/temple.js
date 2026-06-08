@@ -1142,7 +1142,7 @@
     var overlay = document.createElement('div');
     overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,100,0,0.35);z-index:9999;pointer-events:none;transition:opacity 0.6s';
     document.body.appendChild(overlay);
-    setTimeout(function() { overlay.style.opacity='0'; setTimeout(function(){ overlay.remove(); window.open('SujayResume.pdf','_blank'); }, 600); }, 200);
+    setTimeout(function() { overlay.style.opacity='0'; setTimeout(function(){ overlay.remove(); window.open('master_resume.pdf','_blank'); }, 600); }, 200);
   }
 
   /* ── Navigation ── */

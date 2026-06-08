@@ -393,7 +393,7 @@ const CosmosWorkstation = (() => {
   </div><!-- end ws-grid -->
 
   <div class="ws-resume-bar">
-    <a class="ws-resume-btn" href="SujayResume.pdf" target="_blank">⬇ Download Resume</a>
+    <a class="ws-resume-btn" href="master_resume.pdf" target="_blank">⬇ Download Resume</a>
   </div>
 </div>`;
   }

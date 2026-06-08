@@ -50,7 +50,13 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  /* Base size bumped 16 → 18px for better readability.
+     Whole normal mode is rem-based, so everything scales with this. */
+  font-size: 18px;
+}
+/* Keep phones from getting oversized text on already-tight layouts */
+@media (max-width: 768px) {
+  html { font-size: 16.5px; }
 }
 
 body {
@@ -748,14 +754,14 @@ body::before {
 }
 
 .section-label{
-    font-size: 13px;
+    font-size: 0.85rem;
     letter-spacing: 0.25em;
     color: #9d8f7c;
     margin-bottom: 24px;
 }
 
 .section-text{
-    font-size: 20px;
+    font-size: 1.2rem;
     line-height: 1.9;
     color: #3f3f3f;
     max-width: 980px;
@@ -797,14 +803,14 @@ body::before {
 }
 
 .card-content h3{
-    font-size: 22px;
+    font-size: 1.3rem;
     line-height: 1.5;
     margin-bottom: 18px;
     color: #111;
 }
 
 .card-content p{
-    font-size: 17px;
+    font-size: 1.02rem;
     line-height: 1.9;
     color: #4d4d4d;
     margin-bottom: 24px;
@@ -833,7 +839,7 @@ body::before {
     }
 
     .section-text{
-        font-size: 17px;
+        font-size: 1.05rem;
     }
 
     .card-grid{
@@ -865,9 +871,10 @@ body::before {
 }
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .nm-nav { padding: 0 16px; }
   .nm-links { display: none; }
+  .nm-cosmos-btn { display: none !important; }
   .nm-hamburger { display: flex; }
   .nm-hero-inner { grid-template-columns: 1fr; }
   .nm-hero-photo { width: 120px; height: 120px; margin: 0 auto; }

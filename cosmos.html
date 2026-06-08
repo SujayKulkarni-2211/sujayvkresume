@@ -9,6 +9,26 @@
 </head>
 <body>
 
+<!-- ── MOBILE / SMALL-SCREEN BLOCKER ─────────────────── -->
+<div id="cosmos-mobile-blocker">
+  <div class="cmb-inner">
+    <div class="cmb-orbit">
+      <span class="cmb-planet">🪐</span>
+    </div>
+    <div class="cmb-title">Cosmos Mode</div>
+    <div class="cmb-sub">Desktop Only</div>
+    <p class="cmb-text">
+      Sujay's Cosmos is an immersive 3D experience built for larger screens
+      and a pointer. It isn't available on mobile devices.
+    </p>
+    <p class="cmb-text cmb-text-dim">
+      Please open this on a desktop or laptop to explore the cosmos — or
+      continue to the standard website below.
+    </p>
+    <a class="cmb-btn" href="index.html?mode=normal">↪ Continue to Normal Mode</a>
+  </div>
+</div>
+
 <!-- ── THREE.JS CANVAS ──────────────────────────────── -->
 <canvas id="cosmos-canvas"></canvas>
 
@@ -32,16 +52,16 @@
         <img src="images/sujayrv_cleanup.jpeg" alt="Sujay V Kulkarni">
       </div>
       <div class="pilot-name">Sujay V Kulkarni</div>
+      <div class="pilot-about">
+        Where technology meets creativity, and learning becomes breath.<br>
+        Serving through technology, science, music, and literature.
+      </div>
       <div class="pilot-shloka">
         kṣaṇaśaḥ kaṇaśaścaiva vidyāmarthaṃ ca sādhayet<br>
         kṣaṇe naṣṭe kuto vidyā kaṇe naṣṭe kuto dhanam
         <div class="pilot-shloka-meaning">
           Knowledge should be gained through minute by minute efforts. Money should be earned utilizing each and every resource. If you waste time, how can you get knowledge? If you waste resources, how can you accumulate the wealth?
         </div>
-      </div>
-      <div class="pilot-about">
-        Where technology meets creativity, and learning becomes breath.<br>
-        Serving through technology, science, music, and literature.
       </div>
     </div>
   </div>
@@ -334,7 +354,7 @@
 <script src="js/cosmos/sections/auditorium.js"></script>
 <script src="js/cosmos/sections/telescope.js"></script>
 <script src="js/cosmos/sections/achievement.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/cosmos/sections/comms.js"></script>
 <script src="js/cosmos/sections/sections.js"></script>
 
@@ -342,6 +362,17 @@
 <script>
 (function () {
   'use strict';
+
+  // ── MOBILE GUARD ──────────────────────────────────────────
+  // Cosmos is desktop-only. On small / touch devices the blocker overlay
+  // is shown (see app.js) and none of the UI wiring below should run.
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                   || window.innerWidth < 768;
+  if (isMobile) {
+    const blocker = document.getElementById('cosmos-mobile-blocker');
+    if (blocker) blocker.classList.add('show');
+    return;
+  }
 
   function identityMapSvg() {
     const leaves = [

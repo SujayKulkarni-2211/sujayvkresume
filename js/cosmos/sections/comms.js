@@ -165,7 +165,7 @@ const CosmosComms = (() => {
         <textarea class="cc-input cc-textarea" id="cc-message" rows="5" placeholder="Your message..." required></textarea>
       </div>
       <div class="cc-actions">
-        <button type="submit" class="cc-send-btn">⚡ TRANSMIT</button>
+        <button type="submit" class="cc-send-btn" id="cc-send-btn">⚡ TRANSMIT</button>
         <div class="cc-status" id="cc-status"></div>
       </div>
     </form>
@@ -213,32 +213,40 @@ const CosmosComms = (() => {
     // EmailJS submit
     document.getElementById('cc-form').addEventListener('submit', e => {
       e.preventDefault();
-      const name    = document.getElementById('cc-name').value;
-      const email   = document.getElementById('cc-email').value;
-      const message = document.getElementById('cc-message').value;
+      const name    = document.getElementById('cc-name').value.trim();
+      const email   = document.getElementById('cc-email').value.trim();
+      const message = document.getElementById('cc-message').value.trim();
       const status  = document.getElementById('cc-status');
-      status.textContent = 'TRANSMITTING...';
-      status.style.color = '#4ade80';
+      const sendBtn = document.getElementById('cc-send-btn');
 
-      if (typeof emailjs !== 'undefined') {
-        emailjs.init('LSj1PUC36tu3JygHu');
-        emailjs.send('service_3pnt78c', 'template_1xthj2s', {
-          to_name: 'Sujay Kulkarni',
-          from_name: name,
-          email: email,
-          message: message,
-        }).then(() => {
-          status.textContent = '✓ SIGNAL RECEIVED. Sujay will respond shortly.';
-          document.getElementById('cc-form').reset();
-          CosmosAudio.playBuildComplete();
-        }, () => {
-          status.textContent = '✗ TRANSMISSION FAILED. Use direct channels below.';
-          status.style.color = '#f87171';
-        });
-      } else {
+      if (typeof emailjs === 'undefined') {
         status.textContent = '✗ EmailJS not loaded. Use direct channels below.';
         status.style.color = '#f87171';
+        return;
       }
+
+      status.textContent = 'TRANSMITTING...';
+      status.style.color = '#4ade80';
+      if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = '⚡ TRANSMITTING…'; }
+
+      emailjs.init({ publicKey: 'LSj1PUC36tu3JygHu' });
+      emailjs.send('service_3pnt78c', 'template_1xthj2s', {
+        to_name: 'Sujay Kulkarni',
+        from_name: name,
+        email: email,
+        reply_to: email,
+        message: message,
+      }).then(() => {
+        status.textContent = '✓ SIGNAL RECEIVED. Sujay will respond shortly.';
+        document.getElementById('cc-form').reset();
+        CosmosAudio.playBuildComplete();
+        if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = '⚡ TRANSMIT'; }
+      }, (error) => {
+        console.error('EmailJS error:', error);
+        status.textContent = '✗ TRANSMISSION FAILED. Use direct channels below.';
+        status.style.color = '#f87171';
+        if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = '⚡ TRANSMIT'; }
+      });
     });
 
     document.getElementById('cc-close-btn').addEventListener('click', () => {

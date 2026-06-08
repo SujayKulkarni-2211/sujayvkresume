@@ -2,6 +2,18 @@
 'use strict';
 
 (function () {
+  // ── MOBILE GUARD ──────────────────────────────────────────
+  // Cosmos is a desktop-only 3D experience. If a small / touch device
+  // somehow lands here, show the blocker overlay and skip all the heavy
+  // Three.js initialisation entirely.
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                   || window.innerWidth < 768;
+  if (isMobile) {
+    const blocker = document.getElementById('cosmos-mobile-blocker');
+    if (blocker) blocker.classList.add('show');
+    return;
+  }
+
   const canvas   = document.getElementById('cosmos-canvas');
   const statusEl = document.getElementById('cosmos-status');
   const enterBtn = document.getElementById('cosmos-enter-btn');

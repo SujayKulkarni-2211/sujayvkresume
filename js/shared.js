@@ -18,7 +18,7 @@
       <li><a href="svkachievements.html" data-page="svkachievements.html">Achievements</a></li>
       <li><a href="contact.html"        data-page="contact.html">Knock Knock</a></li>
     </ul>
-    <a href="SujayResume.pdf" target="_blank" class="nav-resume-btn">Resume ↗</a>
+    <a href="master_resume.pdf" target="_blank" class="nav-resume-btn">Resume ↗</a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -70,7 +70,7 @@
       <div class="footer-col">
         <p class="footer-col-title">Resources</p>
         <div class="footer-col-links">
-          <a href="SujayResume.pdf" target="_blank">Resume PDF</a>
+          <a href="master_resume.pdf" target="_blank">Resume PDF</a>
           <a href="mailto:sujayvkulkarni@gmail.com">Email</a>
           <a href="tel:+919380142763">+91-9380142763</a>
         </div>

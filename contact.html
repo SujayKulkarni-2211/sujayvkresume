@@ -98,6 +98,21 @@ transition:0.25s;
 transform:translateY(-2px);
 }
 
+.contact-submit:disabled{
+opacity:0.6;
+cursor:not-allowed;
+transform:none;
+}
+
+.contact-status{
+margin-top:16px;
+font-size:0.92rem;
+line-height:1.6;
+min-height:1.2em;
+}
+.contact-status.ok{ color:var(--teal,#1e6e5e); }
+.contact-status.err{ color:#c0392b; }
+
 .contact-side{
 display:flex;
 flex-direction:column;
@@ -276,13 +291,15 @@ required></textarea>
 </div>
 
 <button
-type="button"
+type="submit"
 class="contact-submit"
-onclick="submitForm()">
+id="contactSubmit">
 
 Send Message
 
 </button>
+
+<div id="contactStatus" class="contact-status"></div>
 
 </form>
 
@@ -451,55 +468,60 @@ Call
 </footer>
 
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
 
-emailjs.init('LSj1PUC36tu3JygHu');
+emailjs.init({ publicKey: 'LSj1PUC36tu3JygHu' });
 
-function submitForm(){
+const contactForm   = document.getElementById('contactForm');
+const contactBtn    = document.getElementById('contactSubmit');
+const contactStatus = document.getElementById('contactStatus');
 
-const fullName =
-document.getElementById("fullName").value;
+function setStatus(msg, kind){
+contactStatus.textContent = msg;
+contactStatus.className = 'contact-status' + (kind ? ' ' + kind : '');
+}
 
-const email =
-document.getElementById("email").value;
+contactForm.addEventListener('submit', function(e){
+e.preventDefault();
 
-const message =
-document.getElementById("message").value;
+if (typeof emailjs === 'undefined'){
+setStatus('Email service failed to load. Please email sujaykulkarni2211@gmail.com directly.', 'err');
+return;
+}
+
+const fullName = document.getElementById('fullName').value.trim();
+const email    = document.getElementById('email').value.trim();
+const message  = document.getElementById('message').value.trim();
+
+contactBtn.disabled = true;
+contactBtn.textContent = 'Sending…';
+setStatus('Sending your message…', '');
 
 emailjs.send(
-"service_3pnt78c",
-"template_1xthj2s",
+'service_3pnt78c',
+'template_1xthj2s',
 {
-to_name:'Sujay Kulkarni',
-from_name:fullName,
-email:email,
-message:message
+to_name: 'Sujay Kulkarni',
+from_name: fullName,
+email: email,
+reply_to: email,
+message: message
 }
-)
-
-.then(function(response){
-
-alert(
-`Thank you ${fullName} for contacting.`
-);
-
-document.getElementById("contactForm").reset();
-
-},
-
-function(error){
-
-console.error(error);
-
-alert(
-'Failed to send message. Please try again later.'
-);
-
+).then(function(){
+setStatus('✓ Thank you ' + fullName + '! Your message has been sent. Sujay will reply soon.', 'ok');
+contactForm.reset();
+contactBtn.disabled = false;
+contactBtn.textContent = 'Send Message';
+}, function(error){
+console.error('EmailJS error:', error);
+setStatus('✗ Sorry, the message could not be sent. Please email sujaykulkarni2211@gmail.com directly.', 'err');
+contactBtn.disabled = false;
+contactBtn.textContent = 'Send Message';
 });
 
-}
+});
 
 
 
