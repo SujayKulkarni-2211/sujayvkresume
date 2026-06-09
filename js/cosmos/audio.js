@@ -12,6 +12,7 @@ const CosmosAudio = (() => {
   let enterAudio = null;
   let warpAudio = null;
   let commsAudio = null;
+  let whooshAudio = null;
 
   function init() {
 
@@ -40,6 +41,10 @@ const CosmosAudio = (() => {
     // ── COMMS SIGNAL SOUND ───────────────────────
     commsAudio = new Audio('audio/communication-sound.mp3');
     commsAudio.volume = 0.8;
+
+    // ── WHOOSH (achievement flythrough advance) ──
+    whooshAudio = new Audio('audio/whoosh.mp3');
+    whooshAudio.volume = 0.7;
   }
 
   function resume() {
@@ -142,6 +147,15 @@ const CosmosAudio = (() => {
     });
   }
 
+  // ── WHOOSH (flythrough advance) ───────────────
+  function playWhoosh() {
+    if (muted || !whooshAudio) return;
+    whooshAudio.currentTime = 0;
+    whooshAudio.play().catch(err => {
+      console.log('Whoosh sound blocked:', err);
+    });
+  }
+
   // ── MUTE TOGGLE ───────────────────────────────
   function toggleMute() {
 
@@ -163,6 +177,10 @@ const CosmosAudio = (() => {
       commsAudio.muted = muted;
     }
 
+    if (whooshAudio) {
+      whooshAudio.muted = muted;
+    }
+
     return muted;
   }
 
@@ -176,6 +194,7 @@ const CosmosAudio = (() => {
     playClick,
     playWarp,
     playCommsSignal,
+    playWhoosh,
     toggleMute
   };
 

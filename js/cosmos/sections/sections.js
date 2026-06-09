@@ -172,6 +172,12 @@ const Cosmossections = (() => {
     });
   }
 
+  // Does this section run a live 3D destination behind its HTML?
+  function _is3D(key) {
+    const mod = _sectionMap[key];
+    return !!(mod && mod.build3D && typeof CosmosScene3D !== 'undefined');
+  }
+
   function _unmountCurrent() {
     const c = _getContainer();
     c.style.opacity = '0';
@@ -186,6 +192,19 @@ const Cosmossections = (() => {
     _current = key;
     const c = _getContainer();
     c.innerHTML = '';
+
+    // 3D sections: container becomes a transparent overlay so the live
+    // Three.js destination shows through behind the floating glass cards.
+    if (_is3D(key)) {
+      c.classList.add('section-3d');
+      c.style.background = 'transparent';
+      const dest = mod.build3D();          // { group, anchor, animate }
+      if (dest) CosmosScene3D.enter(dest, 1.1);
+    } else {
+      c.classList.remove('section-3d');
+      c.style.background = 'rgba(4,0,20,0.96)';
+    }
+
     mod.build(c);
     c.style.pointerEvents = 'auto';
     requestAnimationFrame(() => {
@@ -215,8 +234,14 @@ const Cosmossections = (() => {
     CosmosAudio.init();
     CosmosAudio.resume();
 
+    const was3D = _is3D(_current);
+
     _doWarp(() => {
       _unmountCurrent();
+      // Fly the 3D camera back to its orbit and dispose the destination.
+      if (was3D && typeof CosmosScene3D !== 'undefined' && CosmosScene3D.hasActive()) {
+        CosmosScene3D.exitToOrbit(1.1);
+      }
       _showOrbitPanels();
       _warping = false;
     });

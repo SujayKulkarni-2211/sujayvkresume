@@ -108,6 +108,11 @@
     const dt = orbitClock.getDelta();
     CosmosShip.updateOrbit(dt);
 
+    // Per-section 3D destinations (camera flight + object animation)
+    if (typeof CosmosScene3D !== 'undefined') {
+      CosmosScene3D.tick(now * 0.001, dt);
+    }
+
     // Render
     renderer.render(scene, camera);
   }
