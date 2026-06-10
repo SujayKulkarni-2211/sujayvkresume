@@ -93,7 +93,7 @@ const CosmosAuditorium = (() => {
 <div class="au-root au-3d">
   <div class="au-header">
     <span class="au-title">🎭 Milky Way Auditorium</span>
-    <span class="au-hint">A cosmic auditorium — the Milky Way is the audience</span>
+    <span class="au-hint">Welcome to Sujay's Milky Way Auditorium</span>
     <button class="au-back-btn" onclick="Cosmossections.returnToOrbit()">← Return to Orbit</button>
   </div>
 

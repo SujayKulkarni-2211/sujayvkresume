@@ -1504,6 +1504,207 @@ padding: 18px;
   background: rgba(124,58,237,0.35);
   border-color: rgba(167,139,250,0.7);
 }
+
+/* ── 3D MODE: station nodes + sliding console panel ───────────── */
+.ws-root.ws-3d {
+  position: fixed;
+  inset: 0;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.ws-3d .ws-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  border-bottom: none;
+  background: linear-gradient(180deg, rgba(4,0,20,0.82), rgba(4,0,20,0));
+  pointer-events: auto;
+  gap: 14px;
+}
+.ws-3d .ws-hint {
+  font-size: 0.72rem;
+  color: rgba(196,181,253,0.6);
+  letter-spacing: 0.05em;
+  flex: 1;
+}
+.ws-resume-top {
+  font-size: 0.78rem !important;
+  padding: 6px 16px !important;
+  border-radius: 20px !important;
+}
+
+/* Module node hotspots — projected over the 3D station */
+.ws-nodes {
+  position: fixed; inset: 0; z-index: 14; pointer-events: none;
+}
+.ws-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 184px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(10,6,30,0.55);
+  border: 1px solid rgba(96,165,250,0.34);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.4), 0 0 18px rgba(96,165,250,0.12);
+  backdrop-filter: blur(10px);
+  color: #dbe6ff;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, opacity 0.3s;
+  will-change: left, top;
+}
+.ws-node:hover, .ws-node.active {
+  transform: translate(-50%, -50%) scale(1.08);
+  border-color: rgba(147,197,253,0.9);
+  background: rgba(20,28,56,0.7);
+  box-shadow: 0 14px 38px rgba(0,0,0,0.5), 0 0 34px rgba(96,165,250,0.5);
+}
+.ws-node-icon { font-size: 1.3rem; line-height: 1; }
+.ws-node-label {
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: #bfdbfe;
+}
+/* Preview only reveals on hover/active — keeps the station uncluttered */
+.ws-node-preview {
+  font-size: 0.6rem;
+  color: rgba(190,210,255,0.72);
+  text-align: center;
+  line-height: 1.35;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+.ws-node:hover .ws-node-preview,
+.ws-node.active .ws-node-preview { max-height: 40px; opacity: 1; }
+
+/* Focused: when a console is open, dim/recede the other markers a touch */
+.ws-focused .ws-node:not(.active) { opacity: 0.5; }
+
+/* Sliding console panel (the mission-control monitor) — fills the right
+   ~55% when a module is open; the station sits on the left. */
+.ws-console {
+  position: fixed;
+  top: 66px; right: 0; bottom: 0;
+  width: 48vw;
+  max-width: 720px;
+  background: rgba(8,4,24,0.85);
+  border-left: 1px solid var(--ws-accent, rgba(124,58,237,0.4));
+  box-shadow: -18px 0 60px rgba(0,0,0,0.55), inset 0 0 60px var(--ws-glow, rgba(124,58,237,0.05));
+  backdrop-filter: blur(16px);
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.2,0.8,0.2,1);
+  pointer-events: auto;
+  z-index: 18;
+  display: flex;
+  flex-direction: column;
+}
+.ws-console.open { transform: translateX(0); }
+
+/* Per-module accent themes (echo each original section's colour). */
+.ws-console[data-theme="profile"]    { --ws-accent: rgba(167,139,250,0.5); --ws-glow: rgba(124,58,237,0.06); }
+.ws-console[data-theme="areas"]      { --ws-accent: rgba(96,165,250,0.5);  --ws-glow: rgba(37,99,235,0.06); }
+.ws-console[data-theme="research"]   { --ws-accent: rgba(192,132,252,0.55); --ws-glow: rgba(147,51,234,0.07); }
+.ws-console[data-theme="experience"] { --ws-accent: rgba(96,165,250,0.5);  --ws-glow: rgba(37,99,235,0.06); }
+.ws-console[data-theme="projects"]   { --ws-accent: rgba(52,211,153,0.5);  --ws-glow: rgba(5,150,105,0.06); }
+.ws-console[data-theme="certs"]      { --ws-accent: rgba(251,191,36,0.5);  --ws-glow: rgba(217,119,6,0.06); }
+.ws-console[data-theme="education"]  { --ws-accent: rgba(125,211,252,0.5);  --ws-glow: rgba(14,165,233,0.06); }
+.ws-console[data-theme="interests"]  { --ws-accent: rgba(244,114,182,0.5);  --ws-glow: rgba(219,39,119,0.06); }
+.ws-console[data-theme] .ws-console-title { color: var(--ws-accent); }
+.ws-console-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 30px;
+  border-bottom: 1px solid rgba(124,58,237,0.3);
+  flex-shrink: 0;
+}
+.ws-console-title {
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: #c4b5fd;
+  text-transform: uppercase;
+}
+.ws-console-close {
+  background: rgba(124,58,237,0.18);
+  border: 1px solid rgba(167,139,250,0.35);
+  color: #c4b5fd;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.ws-console-close:hover { background: rgba(124,58,237,0.4); }
+.ws-console-body {
+  padding: 28px 30px 44px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167,139,250,0.4) transparent;
+}
+.ws-console-body::-webkit-scrollbar { width: 7px; }
+.ws-console-body::-webkit-scrollbar-thumb { background: rgba(167,139,250,0.4); border-radius: 4px; }
+
+.ws-hover-card {
+  position: fixed;
+  z-index: 17;
+  width: 280px;
+  padding: 12px 14px;
+  border: 1px solid rgba(147,197,253,0.42);
+  background: rgba(7,10,24,0.84);
+  box-shadow: 0 18px 42px rgba(0,0,0,0.42), 0 0 24px rgba(96,165,250,0.18);
+  backdrop-filter: blur(12px);
+  color: #dbeafe;
+  font-family: 'Courier New', monospace;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.ws-hover-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ws-hover-card div {
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bfdbfe;
+  margin-bottom: 6px;
+}
+.ws-hover-card span {
+  display: block;
+  font-size: 0.68rem;
+  line-height: 1.42;
+  color: rgba(219,234,254,0.76);
+}
+
+@media (max-width: 1000px) {
+  .ws-root.ws-3d { position: static; overflow-y: auto; background: rgba(4,0,20,0.92); min-height: 100vh; }
+  .ws-nodes {
+    position: static; inset: auto; display: flex; flex-wrap: wrap;
+    gap: 12px; padding: 76px 16px 16px; justify-content: center;
+  }
+  .ws-node { position: static; transform: none; }
+  .ws-node:hover, .ws-node.active { transform: scale(1.03); }
+  .ws-console {
+    position: fixed; inset: 0; top: 0; width: 100%;
+    transform: translateY(100%);
+  }
+  .ws-console.open { transform: translateY(0); }
+  .ws-3d .ws-hint { display: none; }
+  .ws-hover-card { display: none; }
+}
+
 .ws-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
